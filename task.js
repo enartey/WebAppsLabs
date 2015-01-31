@@ -26,6 +26,8 @@ function processString(s) {
  */
 
 function makeNewTask() {
+   Object.create(Task, [ "id", "title", "completedTime", "tags" ]);
+
    Object.defineProperty(Task, "id", {
       enumerable: true,
       value: function() {
@@ -33,15 +35,18 @@ function makeNewTask() {
        return idNum;
     }
    });
-   Object.defineProperty(Task, "title", {
-      value: ""
-   });
-   Object.defineProperty(Task, "completedTime", {
-      value: null
-   });
+
+   Task.title = "";
+
+   Task.completedTime = null;
+
    Object.defineProperty(Task, "tags", {
+      configurable: false,
+      enumerable: false,
+      writable: false,
       value: []
    });
+
    Object.preventExtensions(Task);
    return Task;
 }
