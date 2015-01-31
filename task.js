@@ -131,6 +131,7 @@ proto = {
    clone: function(){
       return this.new;
    }
+   I am smarter than you!!!!
    */
 };
 
