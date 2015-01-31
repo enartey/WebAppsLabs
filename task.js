@@ -66,7 +66,70 @@ function makeTaskFromString(str)
 
 proto = {
    //Add instance methods here
-
+   setTitle: function(s){
+      this.title = s.trim();
+      return this;
+   },
+   isCompleted: function(){
+      return this.completedTime != null;
+   },
+   toggleCompleted: function(){
+      if (this.isCompleted){
+         this.completedTime = null;
+      } else {
+         this.completedTime = new Date();
+      }
+      return this;
+   },
+   hasTag: function(s){
+      return s in this.tags;
+   },
+   addTag: function(s){
+      if (!this.hasTag(s)){
+         this.tags.push(s);
+      }
+   },
+   removeTag: function(s){
+         this.tags = this.tags.filter(function() {
+            return !s;
+         });
+         return this;
+   },
+   toggleTag: function(s){
+      if (this.hasTag(s)){
+         this.removeTag(s);
+      } else {
+         this.addTag(s);
+      }
+      return this;
+   },
+   addTags: function(arr){
+      arr.forEach(function(element){
+         if (!this.tags.hasTag(element)){
+            this.addTag(element);
+         }
+      });
+      return this;
+   },
+   removeTags: function(arr){
+      arr.forEach(function(element){
+         if (this.tags.hasTag(element)){
+            this.removeTag(element);
+         }
+      });
+      return this;
+   },
+   toggleTags: function(arr){
+      arr.forEach(function(element){
+         this.toggleTag(element);
+      });
+      return this;
+   }
+   /*
+   clone: function(){
+      return this.new;
+   }
+   */
 };
 
 
