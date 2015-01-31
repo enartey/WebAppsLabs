@@ -4,7 +4,7 @@
  * Contains implementation for a "task" "class"
  */
 
-var Task, proto, idNum = 0;
+var Task, proto, idNum = 0, task;
 
 // Helper method. You should not need to change it.
 // Use it in makeTaskFromString
@@ -51,13 +51,15 @@ function makeNewTask() {
    return Task;
 }
 
-function makeTaskFromObject(o)
- {
-
+function makeTaskFromObject(o){
+   task = Task.new;
+   task.setTitle(o.title);
+   task.addTags(o.tags);
 }
 
-function makeTaskFromString(str)
-{}
+function makeTaskFromString(str){
+   makeTaskFromObject(processString(str));
+}
 
 
 /*
