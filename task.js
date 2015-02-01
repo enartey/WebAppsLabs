@@ -26,7 +26,7 @@ function processString(s) {
  */
 
 function makeNewTask() {
-   Object.create(Task, [ "id", "title", "completedTime", "tags" ]);
+   var Task = Object.create(proto);
 
    Object.defineProperty(Task, "id", {
       enumerable: true,
@@ -53,8 +53,9 @@ function makeNewTask() {
 
 function makeTaskFromObject(o){
    task = Task.new;
-   task.setTitle(o.title);
-   task.addTags(o.tags);
+   task.proto.setTitle(o.title);
+   task.proto.addTags(o.tags);
+   return task;
 }
 
 function makeTaskFromString(str){
