@@ -4,7 +4,7 @@
  * Contains implementation for a "task" "class"
  */
 
-var Task, proto, idNum = 0, task;
+var Task, proto, idNum = 0, task, clonedTask;
 
 // Helper method. You should not need to change it.
 // Use it in makeTaskFromString
@@ -26,7 +26,7 @@ function processString(s) {
  */
 
 function makeNewTask() {
-   var Task = Object.create(proto);
+   Task = Object.create(proto);
 
    Object.defineProperty(Task, "id", {
       enumerable: true,
@@ -53,8 +53,8 @@ function makeNewTask() {
 
 function makeTaskFromObject(o){
    task = Task.new;
-   task.proto.setTitle(o.title);
-   task.proto.addTags(o.tags);
+   task.setTitle(o.title);
+   task.addTags(o.tags);
    return task;
 }
 
@@ -127,13 +127,13 @@ proto = {
          this.toggleTag(element);
       });
       return this;
-   }
-   /*
+   },
    clone: function(){
-      return this.new;
+      clonedTask = Task.new;
+      clonedTask.setTitle(this.title);
+      clonedTask.completedTime = this.completedTime;
+      clonedTask.addTags(this.tags);
    }
-   I am smarter than you!!!!
-   */
 };
 
 
