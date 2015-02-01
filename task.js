@@ -133,6 +133,7 @@ proto = {
       clonedTask.setTitle(this.title);
       clonedTask.completedTime = this.completedTime;
       clonedTask.addTags(this.tags);
+      return clonedTask;
    }
 };
 
