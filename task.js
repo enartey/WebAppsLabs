@@ -4,7 +4,7 @@
  * Contains implementation for a "task" "class"
  */
 
-var Task, proto, idNum = 0, task, clonedTask;
+var Task, proto, idNum = 0, task, obj;
 
 // Helper method. You should not need to change it.
 // Use it in makeTaskFromString
@@ -26,9 +26,9 @@ function processString(s) {
  */
 
 function makeNewTask() {
-   Task = Object.create(proto);
+   obj = Object.create(proto);
 
-   Object.defineProperty(Task, "id", {
+   Object.defineProperty(obj, "id", {
       enumerable: true,
       value: function() {
        idNum += 1;
@@ -36,30 +36,30 @@ function makeNewTask() {
     }
    });
 
-   Task.title = "";
+   obj.title = "";
 
-   Task.completedTime = null;
+   obj.completedTime = null;
 
-   Object.defineProperty(Task, "tags", {
+   Object.defineProperty(obj, "tags", {
       configurable: false,
       enumerable: false,
       writable: false,
       value: []
    });
 
-   Object.preventExtensions(Task);
-   return Task;
+   Object.preventExtensions(obj);
+   return obj;
 }
 
 function makeTaskFromObject(o){
-   task = Task.new;
-   task.setTitle(o.title);
-   task.addTags(o.tags);
-   return task;
+   obj = Task.new;
+   obj.title = o.title;
+   obj.tags = o.tags;
+   return obj;
 }
 
 function makeTaskFromString(str){
-   makeTaskFromObject(processString(str));
+   return makeTaskFromObject(processString(str));
 }
 
 
@@ -129,7 +129,7 @@ proto = {
       return this;
    },
    clone: function(){
-      clonedTask = Task.new;
+      var clonedTask = Task.new;
       clonedTask.setTitle(this.title);
       clonedTask.completedTime = this.completedTime;
       clonedTask.addTags(this.tags);
