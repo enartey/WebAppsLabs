@@ -58,7 +58,10 @@ describe("task.js proto methods", function(){
 	it("addTag, removeTag, toggleTag, & hasTag", function(){
 		expect(o.hasTag("something")).to.equal(false);
 		o.addTag("something");
-		//console.log("Look at this:   ", o.tags); //this shows that 'something' was added
+		o.addTag("somethingElse");
+		console.log("Look at this:   ", o.tags); //this shows that 'something' was added
+		console.log( "something" in o.tags);
+		console.log(o.keys);
 		expect(o.hasTag("something")).to.equal(true); //hasTag is coming false for some reason
 		o.removeTag("something");
 		expect(o.hasTag("something")).to.equal(false);
