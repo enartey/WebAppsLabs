@@ -61,7 +61,7 @@ describe("task.js proto methods", function(){
 		o.addTag("somethingElse");
 		console.log("Look at this:   ", o.tags); //this shows that 'something' was added
 		console.log( "something" in o.tags);
-		console.log(o.keys);
+		console.log(Object.keys(o.tags));
 		expect(o.hasTag("something")).to.equal(true); //hasTag is coming false for some reason
 		o.removeTag("something");
 		expect(o.hasTag("something")).to.equal(false);
