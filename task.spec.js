@@ -58,7 +58,8 @@ describe("task.js proto methods", function(){
 	it("addTag, removeTag, toggleTag, & hasTag", function(){
 		expect(o.hasTag("something")).to.equal(false);
 		o.addTag("something");
-		expect(o.hasTag("something")).to.equal(true); //hasTag is coming false for some reason
+		o.addTag("somethingElse");
+		expect(o.hasTag("something")).to.equal(true); 
 		o.removeTag("something");
 		expect(o.hasTag("something")).to.equal(false);
 		o.toggleTag("something");
@@ -67,8 +68,11 @@ describe("task.js proto methods", function(){
 		expect(o.hasTag("something")).to.equal(false);
 	});
 	it("addTags, removeTags, toggleTags", function(){
-		var tagArray = ["these","are","some","tags"]
+		var tagArray = [ 'these', 'are', 'some', 'tags' ];
+		console.log("Look at this:   ", o.tags); //this shows that 'something' was added
+		console.log(tagArray);
 		o.addTags(tagArray);
+		console.log("after add: ", o.tags);
 		expect(o.hasTag("these")).to.equal(true);
 		expect(o.hasTag("are")).to.equal(true);
 		expect(o.hasTag("some")).to.equal(true);
@@ -83,7 +87,7 @@ describe("task.js proto methods", function(){
 		expect(o.hasTag("are")).to.equal(true);
 		expect(o.hasTag("some")).to.equal(true);
 		expect(o.hasTag("tags")).to.equal(true);
-		o.toggleTags(["are","some"]);
+		o.toggleTags([ "are", "some" ]);
 		expect(o.hasTag("these")).to.equal(true);
 		expect(o.hasTag("are")).to.equal(false);
 		expect(o.hasTag("some")).to.equal(true);

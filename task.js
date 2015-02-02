@@ -86,7 +86,13 @@ proto = {
       return this;
    },
    hasTag: function(s){
-      return this.tags.some(function());
+      var bool = false;
+      this.tags.forEach(function(element){
+         if (element === s){
+            bool = true;
+         }
+      });
+      return bool;
    },
    addTag: function(s){
       if (!this.hasTag(s)){
@@ -94,10 +100,11 @@ proto = {
       }
    },
    removeTag: function(s){
-         this.tags = this.tags.filter(function() {
-            return !s;
-         });
-         return this;
+      var index = this.tags.indexOf(s);
+      if(index > -1){
+         this.tags.splice(index,1);
+      }
+      return this;
    },
    toggleTag: function(s){
       if (this.hasTag(s)){
@@ -109,9 +116,7 @@ proto = {
    },
    addTags: function(arr){
       arr.forEach(function(element){
-         if !(this.tags.hasTag(element)){
-            this.addTag(element);
-         }
+         this.tags.addTag(element);
       });
       return this;
    },
@@ -130,7 +135,7 @@ proto = {
       return this;
    },
    clone: function(){
-      var clonedTask = Task.new;
+      var clonedTask = Task.new();
       clonedTask.setTitle(this.title);
       clonedTask.completedTime = this.completedTime;
       clonedTask.addTags(this.tags);
