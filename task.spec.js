@@ -18,7 +18,8 @@ describe("task.js Function Calls", function(){
 		expect(Task.new).to.be.a("function");
 	});
 	it("makeTaskFromObject", function(){
-		task = { title:"testing", tags:["a","b"] }, i = Task.fromObject(task);
+		task = { title: "testing", tags: [ "a", "b" ] };
+		var i = Task.fromObject(task);
 		expect(Task.fromObject(task)).to.not.throw(Error);
 		expect(Task.fromObject(task)).to.be.a("function");
 		expect(i.title).to.equal(task.title);
@@ -29,13 +30,13 @@ describe("task.js Function Calls", function(){
 		expect(Task.fromString(s)).to.not.throw(Error);
 		expect(Task.fromString(s)).to.be.a("function");
 		expect(i.title).to.equal("hi there!");
-		expect(i.tags).to.deep.equal(["hottopic"]);
+		expect(i.tags).to.deep.equal([ "hottopic" ]);
 	});
 });
 describe("task.js proto methods", function(){
 	beforeEach(function(){
 		o = Task.new();
-	})
+	});
 
 	it("setTitle", function(){
 		o.setTitle("sampleTitle");
@@ -45,7 +46,7 @@ describe("task.js proto methods", function(){
 	});
 	it("isCompleted", function(){
 		expect(o.isCompleted()).to.equal(false);
-		o.completedTime = "something other than null"
+		o.completedTime = "something other than null";
 		expect(o.isCompleted()).to.equal(true);
 	});
 	it("toggleCompleted", function(){
@@ -57,9 +58,9 @@ describe("task.js proto methods", function(){
 	it("addTag, removeTag, toggleTag, & hasTag", function(){
 		expect(o.hasTag("something")).to.equal(false);
 		o.addTag("something");
-		console.log("Look at this:   ", o.tags); //this shows that 'something' was added
+		//console.log("Look at this:   ", o.tags); //this shows that 'something' was added
 		expect(o.hasTag("something")).to.equal(true); //hasTag is coming false for some reason
 		o.removeTag("something");
 		expect(o.hasTag("something")).to.equal(false);
-	})
+	});
 });

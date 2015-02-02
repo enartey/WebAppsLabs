@@ -6,7 +6,7 @@
 
 var Task, proto, idNum = 0, task, obj;
 
-// Helper method. You should not need to change it.
+// Hrelper method. You should not need to change it.
 // Use it in makeTaskFromString
 function processString(s) {
    "use strict";
