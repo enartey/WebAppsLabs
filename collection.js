@@ -24,6 +24,50 @@ function makeNewCollection(arr) {
 	return taskCollectionObj;
 }
 
+function findTypeOfArg(arg, arrTask){
+	var index;
+	if (arg instanceof RegExp){
+		for (index = 0; index < arrTask.length; index += 1){
+			if (arrTask[ index ].title.match(arg)){
+				//taskFound = arrTask[ i ];
+				return index;
+			}
+		}
+	} else if (typeof arg === "number"){
+		for (index = 0; index < arrTask.length; index += 1){
+			if (arrTask[ index ].id === arg){
+				return index;
+			}
+		}
+	} else if (typeof arg === "string"){
+		for (index = 0; index < arrTask.length; index += 1){
+			if (arrTask[ index ].title === arg){
+				return index;
+			}
+		}
+	} else if (typeof arg === "function"){
+		for (index = 0; index < arrTask.length; index += 1){
+			if (arg(index)){
+				return index;
+			}
+		}
+	}
+	return null;
+}
+
+function addOneTask(o){
+	if (!(o.id in this.values)){
+		this.values.push(o);
+   	}
+   	return this;
+}
+
+function removeOneTask(num){
+	this.values = this.values.filter(function(){
+		return !this.values.id === num;
+	})
+}
+
 
 /*
  *       Prototype / Instance methods
@@ -41,32 +85,9 @@ proto = {
         return false;
    	}
    },
-   get: function(randomFunction){
-   	var i = 0;
-   	if (typeof randomFunction === "function"){
-   	   	for (i = 0; i < this.values.length; i += 1){
-   		if (randomFunction(taskObject)){
-   			return this.values[ i ];
-   		}
-   	}
-   	} else {
-   		if (typeof randomFunction === "number"){
-   			for (i = 0; i < this.values.length; i += 1){
-   				if (randomFunction === this.values[ i ].id){
-   					return this.values[ i ];
-   				}
-   			}
-   		} else {
-   			if ((typeof randomFunction === "string") || (typeof randomFunction === "RegExp")){
-   				for (i = 0; i < this.values.length; i += 1){
-   					if ((this.values[ i ].title.Contains(randomFunction)) || (this.values[ i ].title.match(randomFunction))){
-   						return this.values[i];
-   					}
-   				}
-   			}
-   		} 
-   			return null;
-   		}
+   get: function(arg){
+   	var indexFound = findTypeOfArg(arg, this.values);
+   	return indexFound === null ? null : this.values[ indexFound ];
    },
    has: function(randomEntry){
    	if (this.get != null){
@@ -74,7 +95,39 @@ proto = {
    	} else {
    		return false;
    	}
-   }
+   },
+   add: function(o){
+   	if (typeof o === "object"){
+   		addOneTask(o);
+   	} else {
+   		o.forEach(function(element){
+   			addOneTask(element);
+   		});
+   	}
+   },
+   new: function(){
+   	var newTaskObject = Task.new;
+   	this.addOneTask(newTaskObject);
+   	return newTaskObject;
+   },
+   remove: function(num){
+   	if (typeof num === "number"){
+   		removeOneTask(num);
+   	} else {
+   		num.forEach(function(element){
+   			removeOneTask(element);
+   		});
+   	}
+   	},/*
+   	filter: function(){
+
+   	}*/
+   	forEach: function(arg){
+   		this.values.forEach(function(element){
+   			arg(element);
+   		});
+   		return this;
+   	}
 };
 
 
