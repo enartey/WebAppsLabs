@@ -86,7 +86,7 @@ proto = {
       return this;
    },
    hasTag: function(s){
-      return s in this.tags;
+      return this.tags.some(function());
    },
    addTag: function(s){
       if (!this.hasTag(s)){
@@ -109,7 +109,7 @@ proto = {
    },
    addTags: function(arr){
       arr.forEach(function(element){
-         if (!this.tags.hasTag(element)){
+         if !(this.tags.hasTag(element)){
             this.addTag(element);
          }
       });
