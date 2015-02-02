@@ -3,22 +3,22 @@
  *
  * Test file for your task class
  */
-var expect, Task,task;
+var expect, Task, task, o;
 
-/* eslint-env: node,mocha */
+/* eslint-env node,mocha */
 
 expect = require('./chai.js').expect;
 
 Task = require('./task.js');
 
 // ADD YOUR TESTS HERE
-describe("Function Calls", function(){
+describe("task.js Function Calls", function(){
 	it("makeNewTask", function(){
 		expect(Task.new).to.not.throw(Error);
 		expect(Task.new).to.be.a("function");
 	});
 	it("makeTaskFromObject", function(){
-		var task = { title:"testing", tags:["a","b"] }, i = Task.fromObject(task);
+		task = { title:"testing", tags:["a","b"] }, i = Task.fromObject(task);
 		expect(Task.fromObject(task)).to.not.throw(Error);
 		expect(Task.fromObject(task)).to.be.a("function");
 		expect(i.title).to.equal(task.title);
@@ -28,7 +28,38 @@ describe("Function Calls", function(){
 		var s = " hi there! #hottopic ", i = Task.fromString(s);
 		expect(Task.fromString(s)).to.not.throw(Error);
 		expect(Task.fromString(s)).to.be.a("function");
-		expect(i.title).to.equal(s.title);
-		expect(i.tags).to.equal(s.tags);
+		expect(i.title).to.equal("hi there!");
+		expect(i.tags).to.deep.equal(["hottopic"]);
+	});
+});
+describe("task.js proto methods", function(){
+	beforeEach(function(){
+		o = Task.new();
+	})
+
+	it("setTitle", function(){
+		o.setTitle("sampleTitle");
+		expect(o.title).to.equal("sampleTitle");
+		o.setTitle("other1Title");
+		expect(o.title).to.equal("other1Title");
+	});
+	it("isCompleted", function(){
+		expect(o.isCompleted()).to.equal(false);
+		o.completedTime = "something other than null"
+		expect(o.isCompleted()).to.equal(true);
+	});
+	it("toggleCompleted", function(){
+		o.toggleCompleted();
+		expect(o.isCompleted()).to.equal(true);
+		o.toggleCompleted();
+		expect(o.isCompleted()).to.equal(false);
+	});
+	it("addTag, removeTag, toggleTag, & hasTag", function(){
+		expect(o.hasTag("something")).to.equal(false);
+		o.addTag("something");
+		console.log("Look at this:   ", o.tags); //this shows that 'something' was added
+		expect(o.hasTag("something")).to.equal(true); //hasTag is coming false for some reason
+		o.removeTag("something");
+		expect(o.hasTag("something")).to.equal(false);
 	})
 });

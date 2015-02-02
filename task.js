@@ -48,12 +48,13 @@ function makeNewTask() {
    });
 
    Object.preventExtensions(obj);
+   console.log(obj);
    return obj;
 }
 
 function makeTaskFromObject(o){
    obj = Task.new;
-   obj.title = o.title;
+   obj.title = o.title.trim();
    obj.tags = o.tags;
    return obj;
 }
@@ -77,7 +78,7 @@ proto = {
       return this.completedTime != null;
    },
    toggleCompleted: function(){
-      if (this.isCompleted){
+      if (this.isCompleted()){
          this.completedTime = null;
       } else {
          this.completedTime = new Date();
