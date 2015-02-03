@@ -115,23 +115,23 @@ proto = {
       return this;
    },
    addTags: function(arr){
-      arr.forEach(function(element){
-         this.tags.addTag(element);
-      });
+      for(var index = 0; index < arr.length; index += 1){
+         this.addTag(arr[index]);
+      }
       return this;
    },
    removeTags: function(arr){
-      arr.forEach(function(element){
-         if (this.tags.hasTag(element)){
-            this.removeTag(element);
+      for(var index = 0; index < arr.length; index += 1){
+         if (this.hasTag(arr[index])){
+            this.removeTag(arr[index]);
          }
-      });
+      }
       return this;
    },
    toggleTags: function(arr){
-      arr.forEach(function(element){
-         this.toggleTag(element);
-      });
+      for(var index = 0; index < arr.length; index += 1){
+         this.toggleTag(arr[index]);
+      }
       return this;
    },
    clone: function(){

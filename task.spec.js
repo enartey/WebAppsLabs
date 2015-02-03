@@ -69,10 +69,7 @@ describe("task.js proto methods", function(){
 	});
 	it("addTags, removeTags, toggleTags", function(){
 		var tagArray = [ 'these', 'are', 'some', 'tags' ];
-		console.log("Look at this:   ", o.tags); //this shows that 'something' was added
-		console.log(tagArray);
 		o.addTags(tagArray);
-		console.log("after add: ", o.tags);
 		expect(o.hasTag("these")).to.equal(true);
 		expect(o.hasTag("are")).to.equal(true);
 		expect(o.hasTag("some")).to.equal(true);
@@ -90,8 +87,8 @@ describe("task.js proto methods", function(){
 		o.toggleTags([ "are", "some" ]);
 		expect(o.hasTag("these")).to.equal(true);
 		expect(o.hasTag("are")).to.equal(false);
-		expect(o.hasTag("some")).to.equal(true);
-		expect(o.hasTag("tags")).to.equal(false);
+		expect(o.hasTag("some")).to.equal(false);
+		expect(o.hasTag("tags")).to.equal(true);
 	});
 	it("Clone", function(){
 		o.addTag("sampleTag");
