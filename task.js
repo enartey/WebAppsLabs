@@ -115,22 +115,25 @@ proto = {
       return this;
    },
    addTags: function(arr){
-      for(var index = 0; index < arr.length; index += 1){
-         this.addTag(arr[index]);
+      var index;
+      for (index = 0; index < arr.length; index += 1){
+         this.addTag(arr[ index ]);
       }
       return this;
    },
    removeTags: function(arr){
-      for(var index = 0; index < arr.length; index += 1){
-         if (this.hasTag(arr[index])){
-            this.removeTag(arr[index]);
+      var index;
+      for (index = 0; index < arr.length; index += 1){
+         if (this.hasTag(arr[ index ])){
+            this.removeTag(arr[ index ]);
          }
       }
       return this;
    },
    toggleTags: function(arr){
-      for(var index = 0; index < arr.length; index += 1){
-         this.toggleTag(arr[index]);
+      var index;
+      for (index = 0; index < arr.length; index += 1){
+         this.toggleTag(arr[ index ]);
       }
       return this;
    },

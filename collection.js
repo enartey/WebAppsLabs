@@ -111,21 +111,22 @@
 		return newTaskObject;
 	},
 	remove: function(num){
+		var index;
 		if (typeof num === "number"){
 			removeOneTask(num);
 		} else {
-			num.forEach(function(element){
-				removeOneTask(element);
-			});
+			for (index = 0; index < num.length; index += 1){
+				removeOneTask(num[ index ]);
+			}
 		}
 		},
 		filter: function(arg){
-			var gottenElement;
+			var gottenElement, index;
 			if (Array.isArray(arg)){
-				arg.forEach(function(element){
-					gottenElement = this.get(element);
+				for (index = 0; index < arg.length; index += 1){
+					gottenElement = this.get(arg[ index ]);
 					newCollection = newCollection.add(gottenElement);
-				});
+				}
 			} else {
 				gottenElement = this.get(arg);
 				newCollection = newCollection.add(gottenElement);
@@ -133,9 +134,10 @@
 			return newCollection;
 		},
 		forEach: function(arg){
-			this.values.forEach(function(element){
-				arg(element);
-			});
+			var index;
+			for (index = 0; index < this.values.length; index += 1){
+				arg(this.values[ index ]);
+			}
 			return this;
 		}
 	};
