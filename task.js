@@ -101,8 +101,8 @@ proto = {
    },
    removeTag: function(s){
       var index = this.tags.indexOf(s);
-      if(index > -1){
-         this.tags.splice(index,1);
+      if (index > -1){
+         this.tags.splice(index, 1);
       }
       return this;
    },

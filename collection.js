@@ -1,18 +1,18 @@
-/*
- * collection.js
- *
- * Contains implementation for a "TaskCollection" "class"
- */
+	/*
+	* collection.js
+	*
+	* Contains implementation for a "TaskCollection" "class"
+	*/
 
-var TaskCollection, Task, proto, taskCollectionObj, taskObject;
+	var TaskCollection, Task, proto, taskCollectionObj, taskObject, newCollection = TaskCollection.new();
 
-Task = require("./task");
+	Task = require("./task");
 
-/*
- *       Constructors
- */
+	/*
+	*       Constructors
+	*/
 
-function makeNewCollection(arr) {
+	function makeNewCollection(arr) {
 	taskCollectionObj = Object.create(proto);
 
 	Object.defineProperty(taskCollectionObj, "values", {
@@ -22,9 +22,9 @@ function makeNewCollection(arr) {
 
 	Object.preventExtensions(taskCollectionObj);
 	return taskCollectionObj;
-}
+	}
 
-function findTypeOfArg(arg, arrTask){
+	function findTypeOfArg(arg, arrTask){
 	var index;
 	if (arg instanceof RegExp){
 		for (index = 0; index < arrTask.length; index += 1){
@@ -53,93 +53,103 @@ function findTypeOfArg(arg, arrTask){
 		}
 	}
 	return null;
-}
+	}
 
-function addOneTask(o){
+	function addOneTask(o){
 	if (!(o.id in this.values)){
 		this.values.push(o);
-   	}
-   	return this;
-}
+		}
+		return this;
+	}
 
-function removeOneTask(num){
+	function removeOneTask(num){
 	this.values = this.values.filter(function(){
 		return !this.values.id === num;
-	})
-}
+	});
+	}
 
 
-/*
- *       Prototype / Instance methods
- */
+	/*
+	*       Prototype / Instance methods
+	*/
 
-proto = {
-   //Add instance methods here
-   length: function(){
-    return this.length;
-   },
-   isEmpty: function(){
-    if (this.length <= 0){
-     return true;
-   	} else {
-        return false;
-   	}
-   },
-   get: function(arg){
-   	var indexFound = findTypeOfArg(arg, this.values);
-   	return indexFound === null ? null : this.values[ indexFound ];
-   },
-   has: function(randomEntry){
-   	if (this.get != null){
-   		return true;
-   	} else {
-   		return false;
-   	}
-   },
-   add: function(o){
-   	if (typeof o === "object"){
-   		addOneTask(o);
-   	} else {
-   		o.forEach(function(element){
-   			addOneTask(element);
-   		});
-   	}
-   },
-   new: function(){
-   	var newTaskObject = Task.new;
-   	this.addOneTask(newTaskObject);
-   	return newTaskObject;
-   },
-   remove: function(num){
-   	if (typeof num === "number"){
-   		removeOneTask(num);
-   	} else {
-   		num.forEach(function(element){
-   			removeOneTask(element);
-   		});
-   	}
-   	},/*
-   	filter: function(){
+	proto = {
+	//Add instance methods here
+	length: function(){
+	return this.length;
+	},
+	isEmpty: function(){
+	if (this.length <= 0){
+	 return true;
+		} else {
+	    return false;
+		}
+	},
+	get: function(arg){
+		var indexFound = findTypeOfArg(arg, this.values);
+		return indexFound === null ? null : this.values[ indexFound ];
+	},
+	has: function(randomEntry){
+		if (this.get != null){
+			return true;
+		} else {
+			return false;
+		}
+	},
+	add: function(o){
+		if (typeof o === "object"){
+			addOneTask(o);
+		} else {
+			o.forEach(function(element){
+				addOneTask(element);
+			});
+		}
+	},
+	new: function(){
+		var newTaskObject = Task.new;
+		this.addOneTask(newTaskObject);
+		return newTaskObject;
+	},
+	remove: function(num){
+		if (typeof num === "number"){
+			removeOneTask(num);
+		} else {
+			num.forEach(function(element){
+				removeOneTask(element);
+			});
+		}
+		},
+		filter: function(arg){
+			var gottenElement;
+			if (Array.isArray(arg)){
+				arg.forEach(function(element){
+					gottenElement = this.get(element);
+					newCollection = newCollection.add(gottenElement);
+				});
+			} else {
+				gottenElement = this.get(arg);
+				newCollection = newCollection.add(gottenElement);
+			}
+			return newCollection;
+		},
+		forEach: function(arg){
+			this.values.forEach(function(element){
+				arg(element);
+			});
+			return this;
+		}
+	};
 
-   	}*/
-   	forEach: function(arg){
-   		this.values.forEach(function(element){
-   			arg(element);
-   		});
-   		return this;
-   	}
-};
 
 
+	// DO NOT MODIFY ANYTHING BELOW THIS LINE
+	TaskCollection = {
+	new: makeNewCollection
+	};
 
-// DO NOT MODIFY ANYTHING BELOW THIS LINE
-TaskCollection = {
-   new: makeNewCollection
-};
+	Object.defineProperty(TaskCollection, proto, {
+	value: proto,
+	writable: false
+	});
 
-Object.defineProperty(TaskCollection, proto, {
-   value: proto,
-   writable: false
-});
-
-module.exports = Task;
+	module.exports = Task;
