@@ -156,7 +156,9 @@ var makeController = function(element) {
     * - Return true to allow propagation.
     */
    function editElement(ev) {
-      return true;
+    var clickedElement = getLi(ev);
+    enableEditMode(clickedElement).focus();
+    return true;
    };
 
    /*
