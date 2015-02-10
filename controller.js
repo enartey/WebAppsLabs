@@ -42,7 +42,7 @@ var makeController = function(element) {
    function newTaskHTML(str) {
     var returnString = '<li><span>'+str+'</span><input type ="button" class=remove value="Remove"></li>';
     return returnString;
-   }
+   };
 
    /*
     * Given an event that occured in an element within a "list element"
@@ -51,7 +51,7 @@ var makeController = function(element) {
     */
    function getLi(ev) {
     return $(el).closest("li");
-   }
+   };
 
    /*
     * Given a list item (as jQuery wrapper) returns its index among its
@@ -61,8 +61,7 @@ var makeController = function(element) {
    function getIndex(li) {
     var prevElements = li.prevAll();
     return prevElements.keys.length;
-
-   }
+   };
 
    /*
     * Given a jQuery wrapper for a list item, enables "Edit mode" for that
@@ -74,7 +73,7 @@ var makeController = function(element) {
     */
    function enableEditMode(li) {
 
-   }
+   };
 
    /*
     * Given a jQuery wrapper for a list item, disables "Edit mode" for that
@@ -86,7 +85,7 @@ var makeController = function(element) {
     */
    function disableEditMode(li) {
 
-   }
+   };
 
    /*
     * EVENT HANDLERS
