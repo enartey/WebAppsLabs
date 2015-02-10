@@ -50,7 +50,7 @@ var makeController = function(element) {
     * Use jQuery's "closest".
     */
    function getLi(ev) {
-
+    return $(el).closest("li");
    }
 
    /*
