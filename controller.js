@@ -50,7 +50,7 @@ var makeController = function(element) {
     * Use jQuery's "closest".
     */
    function getLi(ev) {
-    return $(el).closest("li");
+    return $(ev).closest("li");
    };
 
    /*
@@ -59,8 +59,12 @@ var makeController = function(element) {
     * Use jQuery's "prevAll".
     */
    function getIndex(li) {
-    var prevElements = li.prevAll();
-    return prevElements.keys.length;
+    //var prevElements = $(li).prevAll();
+    //console.log(li);
+    //console.log(prevElements.length);
+    //console.log(prevElements);
+    //console.log($(li).prevAll().length);
+    return $(li).prevAll().length;
    };
 
    /*
@@ -139,9 +143,15 @@ var makeController = function(element) {
     * - Return true to not prevent propagation.
     */
    function removeElement(ev) {
-      var index = getIndex(getLi(ev));
+      console.log("remove button clicked");
+      var x = getLi(ev);
+      console.log(x);
+      var index = getIndex(x);
+      //console.log(tasks);
+      //console.log(index);
       tasks.splice(index, 1);
-      //must now remove li element from the list
+      //console.log(tasks);
+      x.remove();
       return true;
    };
 
