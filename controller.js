@@ -203,8 +203,11 @@ var makeController = function(element) {
     * - Return "false" to prevent propagation in the case of an escape.
     */
    function checkForCancel(ev) {
-      if (ev.keyCode !== 0x1B) { return true; }
-
+      if (ev.keyCode !== 0x1B) { 
+        return true; 
+      } else {
+        disableEditMode(ev.target);
+      }
       return false;
    };
 
