@@ -121,9 +121,9 @@ var makeController = function(element) {
     * - Return true to not prevent propagation.
     */
    function addNewTask(ev) {
-    var newTask = ev+"New Task";
+    var newTask = "New Task";
     tasks.push(newTask);
-    var taskHTML = newTaskHTML(ev);
+    var taskHTML = newTaskHTML(newTask);
     taskHTML.insertAfter(el);
     return true;
    };
