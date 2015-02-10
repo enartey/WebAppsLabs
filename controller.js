@@ -40,7 +40,7 @@ var makeController = function(element) {
     * an "input" button for "remove". See examples in sample.html
     */
    function newTaskHTML(str) {
-
+    $('<li><span>'str'</span><input type="button" value="Remove"></li>');
    }
 
    /*
@@ -109,9 +109,8 @@ var makeController = function(element) {
       // Bind clicking of the button to calling the addNewTask function.
       button.click(addNewTask);
 
-
       return this;
-   }
+   
 
    /*
     * Adds a new "Task". In this method you should:
