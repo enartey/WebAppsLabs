@@ -52,7 +52,7 @@ var makeController = function(element) {
     */
    function getLi(ev) {
     return $(ev.target).closest("li");
-   };
+   }
 
    /*
     * Given a list item (as jQuery wrapper) returns its index among its
@@ -61,7 +61,7 @@ var makeController = function(element) {
     */
    function getIndex(li) {
     return $(li).prevAll().length;
-   };
+   }
 
    /*
     * Given a jQuery wrapper for a list item, enables "Edit mode" for that
@@ -74,9 +74,9 @@ var makeController = function(element) {
    function enableEditMode(li) {
     var inputElement;
     $(li).children().addClass("hidden");
-    inputElement = $("<input>").attr("type","text").attr("class","edit");
+    inputElement = $("<input>").attr("type", "text").attr("class", "edit");
     return $(li).append(inputElement);
-   };
+   }
 
    /*
     * Given a jQuery wrapper for a list item, disables "Edit mode" for that
@@ -90,7 +90,7 @@ var makeController = function(element) {
     $(li).children(".edit").remove();
     $(li).children().removeClass("hidden");
     return $(li);
-   };
+   }
 
    /*
     * EVENT HANDLERS
@@ -110,14 +110,13 @@ var makeController = function(element) {
       // Use jQuery syntax to create a new html element
       // Use appropriate append-type jQuery method to add it right after
       // "el"
-      button = $('<input type="button" value="New" />');
+      button = $("<input type='button' value='New' />");
       button.insertAfter(el);
 
       // Bind clicking of the button to calling the addNewTask function.
       button.click(addNewTask);
       return this;
-    };
-   
+    }
 
    /*
     * Adds a new "Task". In this method you should:
@@ -127,9 +126,9 @@ var makeController = function(element) {
     * - Return true to not prevent propagation.
     */
    function addNewTask(ev) {
-    var newTask = "New Task";
+    var newTask = "New Task", taskHTML;
     tasks.push(newTask);
-    var taskHTML = newTaskHTML(newTask);
+    taskHTML = newTaskHTML(newTask);
     el.append(taskHTML);
     return true;
    };
