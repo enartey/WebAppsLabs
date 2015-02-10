@@ -109,7 +109,6 @@ var makeController = function(element) {
 
       // Bind clicking of the button to calling the addNewTask function.
       button.click(addNewTask);
-
       return this;
     };
    
@@ -122,7 +121,11 @@ var makeController = function(element) {
     * - Return true to not prevent propagation.
     */
    function addNewTask(ev) {
-      return true;
+    var newTask = ev+"New Task";
+    tasks.push(newTask);
+    var taskHTML = newTaskHTML(ev);
+    taskHTML.insertAfter(el);
+    return true;
    };
 
    /*
