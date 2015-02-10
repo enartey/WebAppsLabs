@@ -131,7 +131,7 @@ var makeController = function(element) {
     taskHTML = newTaskHTML(newTask);
     el.append(taskHTML);
     return true;
-   };
+   }
 
    /*
     * This method triggers in response to clicking the button with class
@@ -143,12 +143,13 @@ var makeController = function(element) {
     * - Return true to not prevent propagation.
     */
    function removeElement(ev) {
-      var liElement = getLi(ev);
-      var index = getIndex(liElement);
+      var liElement, index;
+      liElement = getLi(ev);
+      index = getIndex(liElement);
       tasks.splice(index, 1);
       liElement.remove();
       return true;
-   };
+   }
 
 
    /*
@@ -164,7 +165,7 @@ var makeController = function(element) {
     var clickedElement = getLi(ev);
     enableEditMode(clickedElement).focus();
     return true;
-   };
+   }
 
    /*
     * This method happens when the text input where the user was editing a
@@ -191,7 +192,7 @@ var makeController = function(element) {
     */
    function commitEditing(ev) {
     var liElement, editElementValue, elementIndex;
-    if(ev.target == null){
+    if (ev.target == null){
       return true;
     }
     liElement = getLi(ev);
@@ -201,7 +202,7 @@ var makeController = function(element) {
     liElement.children("span").html(editElementValue);
     disableEditMode(liElement);
     return true;
-   };
+   }
 
    /*
     * This method is meant to react to the case where the user has pressed
@@ -215,13 +216,13 @@ var makeController = function(element) {
     * - Return "false" to prevent propagation in the case of an escape.
     */
    function checkForCancel(ev) {
-      if (ev.keyCode !== 0x1B) { 
-        return true; 
+      if (ev.keyCode !== 0x1B) {
+        return true;
       } else {
         disableEditMode(ev.target);
       }
       return false;
-   };
+   }
 
    /* You do not need to change anything below this line */
 
