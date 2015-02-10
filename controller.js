@@ -86,7 +86,9 @@ var makeController = function(element) {
     * - Returns the list item
     */
    function disableEditMode(li) {
-
+    $(li).children(".edit").remove();
+    $(li).children().removeClass("hidden");
+    return $(li);
    };
 
    /*
