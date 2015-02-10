@@ -40,7 +40,7 @@ var makeController = function(element) {
     * an "input" button for "remove". See examples in sample.html
     */
    function newTaskHTML(str) {
-    var returnString = '<li><span>'+str+'</span><input type ="button" class=remove value="Remove"></li>';
+    var returnString = "<li><span>" + str + "</span><input type ='button' class=remove value='Remove'></li>";
     return returnString;
    };
 
