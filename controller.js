@@ -190,13 +190,14 @@ var makeController = function(element) {
     * - Return true to allow propagation
     */
    function commitEditing(ev) {
+    var liElement, editElementValue;
     if(ev.target == null){
       return true;
     }
-    var liElement = getLi(ev);
-    var editElementValue = ev.target.value;
+    liElement = getLi(ev);
+    editElementValue = ev.target.value;
     var elementIndex = getIndex(liElement);
-    tasks[elementIndex] = editElementValue;
+    tasks[ elementIndex ] = editElementValue;
     liElement.children("span").html(editElementValue);
     disableEditMode(liElement);
       return true;
