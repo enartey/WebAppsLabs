@@ -139,6 +139,9 @@ var makeController = function(element) {
     * - Return true to not prevent propagation.
     */
    function removeElement(ev) {
+      var index = getIndex(getLi(ev));
+      tasks.splice(index, 1);
+      //must now remove li element from the list
       return true;
    };
 
