@@ -124,7 +124,7 @@ var makeController = function(element) {
     var newTask = "New Task";
     tasks.push(newTask);
     var taskHTML = newTaskHTML(newTask);
-    taskHTML.insertAfter(el);
+    el.append(taskHTML);
     return true;
    };
 
