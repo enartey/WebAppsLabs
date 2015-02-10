@@ -190,6 +190,15 @@ var makeController = function(element) {
     * - Return true to allow propagation
     */
    function commitEditing(ev) {
+    if(ev.target == null){
+      return true;
+    }
+    var liElement = getLi(ev);
+    var editElementValue = ev.target.value;
+    var elementIndex = getIndex(liElement);
+    tasks[elementIndex] = editElementValue;
+    liElement.children("span").html(editElementValue);
+    disableEditMode(liElement);
       return true;
    };
 
