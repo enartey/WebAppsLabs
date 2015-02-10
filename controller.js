@@ -59,11 +59,6 @@ var makeController = function(element) {
     * Use jQuery's "prevAll".
     */
    function getIndex(li) {
-    //var prevElements = $(li).prevAll();
-    //console.log(li);
-    //console.log(prevElements.length);
-    //console.log(prevElements);
-    //console.log($(li).prevAll().length);
     return $(li).prevAll().length;
    };
 
@@ -143,15 +138,10 @@ var makeController = function(element) {
     * - Return true to not prevent propagation.
     */
    function removeElement(ev) {
-      console.log("remove button clicked");
-      var x = getLi(ev);
-      console.log(x);
-      var index = getIndex(x);
-      //console.log(tasks);
-      //console.log(index);
+      var liElement = getLi(ev);
+      var index = getIndex(liElement);
       tasks.splice(index, 1);
-      //console.log(tasks);
-      x.remove();
+      liElement.remove();
       return true;
    };
 
