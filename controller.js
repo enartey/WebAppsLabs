@@ -13,7 +13,8 @@ var makeController = function(element) {
 
    // el is a jQuery object wrapping "element", in case it wasn't a jQuery
    // object already.
-   var el = $(element);
+   // "tasks" is an array of strings for the tasks to be shown.
+   var el = $(element), var tasks = [];
 
    // "tasks" is an array of strings for the tasks to be shown.
    var tasks = [];
