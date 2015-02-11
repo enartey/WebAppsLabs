@@ -218,9 +218,8 @@ var makeController = function(element) {
    function checkForCancel(ev) {
       if (ev.keyCode !== 0x1B) {
         return true;
-      } else {
-        disableEditMode(ev.target);
       }
+      disableEditMode(ev.target);
       return false;
    }
 
