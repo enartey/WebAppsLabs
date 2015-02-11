@@ -16,9 +16,6 @@ var makeController = function(element) {
    // "tasks" is an array of strings for the tasks to be shown.
    var el = $(element), tasks = [];
 
-   // "tasks" is an array of strings for the tasks to be shown.
-   var tasks = [];
-
    // add an "add" button right after the element
    addAddButton();
    // Bind events to controller functions
