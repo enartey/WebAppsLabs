@@ -4,6 +4,8 @@
  * Controls the interaction between the page and an array of values
  */
 
+ /* global $ */
+
 /*
  * Used to create a new "controller".
  * "element" needs to be a DOM or jQuery "ul" element.
