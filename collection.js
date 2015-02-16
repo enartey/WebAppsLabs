@@ -4,7 +4,7 @@
  * Contains implementation for a "TaskCollection" "class"
  */
 
-var TaskCollection, Task, proto, taskCollectionObj, taskObject, newCollection = TaskCollection.new();
+var TaskCollection, Task, proto, taskCollectionObj, newCollection = TaskCollection.new();
 
 Task = require("./task");
 
@@ -30,7 +30,6 @@ function findTypeOfArg(arg, arrTask){
 	if (arg instanceof RegExp){
 		for (index = 0; index < arrTask.length; index += 1){
 			if (arrTask[ index ].title.match(arg)){
-				// taskFound = arrTask[ i ];
 				return index;
 			}
 		}
@@ -157,6 +156,10 @@ proto = {
 			arg(this.values[ index ]);
 		}
 		return this;
+	},
+
+	groupByTag: function(){
+		"use strict";
 	}
 };
 

@@ -4,7 +4,7 @@
  * Contains implementation for a "task" "class"
  */
 
-var Task, proto, idNum = 0, obj;
+var Task, proto, idNum = 0, task, obj;
 
 // Hrelper method. You should not need to change it.
 // Use it in makeTaskFromString
@@ -26,7 +26,6 @@ function processString(s) {
  */
 
 function makeNewTask() {
-   "use strict";
    obj = Object.create(proto);
 
    Object.defineProperty(obj, "id", {
@@ -54,15 +53,13 @@ function makeNewTask() {
 }
 
 function makeTaskFromObject(o){
-   "use strict";
-   obj = Task.new();
+   obj = Task.new;
    obj.title = o.title.trim();
    obj.tags = o.tags;
    return obj;
 }
 
 function makeTaskFromString(str){
-   "use strict";
    return makeTaskFromObject(processString(str));
 }
 
@@ -72,18 +69,15 @@ function makeTaskFromString(str){
  */
 
 proto = {
-   // Add instance methods here
+   //Add instance methods here
    setTitle: function(s){
-      "use strict";
       this.title = s.trim();
       return this;
    },
    isCompleted: function(){
-      "use strict";
       return this.completedTime != null;
    },
    toggleCompleted: function(){
-      "use strict";
       if (this.isCompleted()){
          this.completedTime = null;
       } else {
@@ -92,7 +86,6 @@ proto = {
       return this;
    },
    hasTag: function(s){
-      "use strict";
       var bool = false;
       this.tags.forEach(function(element){
          if (element === s){
@@ -102,13 +95,11 @@ proto = {
       return bool;
    },
    addTag: function(s){
-      "use strict";
       if (!this.hasTag(s)){
          this.tags.push(s);
       }
    },
    removeTag: function(s){
-      "use strict";
       var index = this.tags.indexOf(s);
       if (index > -1){
          this.tags.splice(index, 1);
@@ -116,7 +107,6 @@ proto = {
       return this;
    },
    toggleTag: function(s){
-      "use strict";
       if (this.hasTag(s)){
          this.removeTag(s);
       } else {
@@ -125,7 +115,6 @@ proto = {
       return this;
    },
    addTags: function(arr){
-      "use strict";
       var index;
       for (index = 0; index < arr.length; index += 1){
          this.addTag(arr[ index ]);
@@ -133,7 +122,6 @@ proto = {
       return this;
    },
    removeTags: function(arr){
-      "use strict";
       var index;
       for (index = 0; index < arr.length; index += 1){
          if (this.hasTag(arr[ index ])){
@@ -143,7 +131,6 @@ proto = {
       return this;
    },
    toggleTags: function(arr){
-      "use strict";
       var index;
       for (index = 0; index < arr.length; index += 1){
          this.toggleTag(arr[ index ]);
@@ -151,7 +138,6 @@ proto = {
       return this;
    },
    clone: function(){
-      "use strict";
       var clonedTask = Task.new();
       clonedTask.setTitle(this.title);
       clonedTask.completedTime = this.completedTime;
