@@ -25,7 +25,7 @@ function makeNewCollection(arr) {
 			writable: false,
 			value: arr.forEach(function(element){
 				addOneTask(element);
-			});
+			})
 		});
 	}
 	Object.preventExtensions(taskCollectionObj);
@@ -185,8 +185,9 @@ proto = {
 
 	print: function(){
 		"use strict";
-		var returnString;
-
+		var returnString, taskTitle, taskCompleted, completionDate, tasktags;
+		//for(index = 0; index < )
+		//taskTitle = 
 	}
 };
 
