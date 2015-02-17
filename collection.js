@@ -160,6 +160,18 @@ proto = {
 
 	groupByTag: function(){
 		"use strict";
+		var index, returnObj = {}, taskArray, taskIndex;
+		returnObj.keys = null;
+		returnObj.values = makeNewCollection([]);
+		taskArray = this.values;
+		for (index = 0; index < taskArray.length; index += 1){
+			if (!(taskArray[ index ] in returnObj.keys)){
+				returnObj.keys.push(taskArray[ index ]);
+			}
+			for (taskIndex = 0; taskIndex < taskArray.tags.length; taskIndex += 1){
+				returnObj.values.addOneTask(taskArray.tags[ taskIndex ]);
+			}
+		}
 	}
 };
 
