@@ -20,10 +20,12 @@ function makeNewCollection(arr) {
 		writable: false,
 		value: []
 	});
-	} else {
+	} else if (Array.isArray(arr)){
 		Object.defineProperty(taskCollectionObj, "values", {
 			writable: false,
-			value: arr
+			value: arr.forEach(function(element){
+				addOneTask(element);
+			});
 		});
 	}
 	Object.preventExtensions(taskCollectionObj);
