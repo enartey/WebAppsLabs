@@ -172,6 +172,10 @@ proto = {
 				returnObj.values.addOneTask(taskArray.tags[ taskIndex ]);
 			}
 		}
+	},
+
+	print: function(){
+		"use strict";
 	}
 };
 
