@@ -4,7 +4,7 @@
  * Contains implementation for a "TaskCollection" "class"
  */
 
-var TaskCollection, Task, proto, taskCollectionObj, newCollection = TaskCollection.new();
+var TaskCollection, Task, proto, taskCollectionObj;
 
 Task = require("./task");
 
@@ -136,7 +136,7 @@ proto = {
 
 	filter: function(arg){
 		"use strict";
-		var gottenElement, index;
+		var gottenElement, index, newCollection = TaskCollection.new();
 		if (Array.isArray(arg)){
 			for (index = 0; index < arg.length; index += 1){
 				gottenElement = this.get(arg[ index ]);
