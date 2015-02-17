@@ -15,11 +15,17 @@ Task = require("./task");
 function makeNewCollection(arr) {
 	"use strict";
 	taskCollectionObj = Object.create(proto);
-
-	Object.defineProperty(taskCollectionObj, "values", {
+	if(arr === undefined){
+		Object.defineProperty(taskCollectionObj, "values", {
 		writable: false,
 		value: []
 	});
+	} else {
+		Object.defineProperty(taskCollectionObj, "values", {
+			writable: false,
+			value: arr
+		});
+	}
 	Object.preventExtensions(taskCollectionObj);
 	return taskCollectionObj;
 }
@@ -162,7 +168,7 @@ proto = {
 		"use strict";
 		var index, returnObj = {}, taskArray, taskIndex;
 		returnObj.keys = null;
-		returnObj.values = makeNewCollection([]);
+		returnObj.values = makeNewCollection();
 		taskArray = this.values;
 		for (index = 0; index < taskArray.length; index += 1){
 			if (!(taskArray[ index ] in returnObj.keys)){
@@ -177,7 +183,8 @@ proto = {
 
 	print: function(){
 		"use strict";
-		var returnString
+		var returnString;
+
 	}
 };
 
