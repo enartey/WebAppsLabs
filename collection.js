@@ -198,6 +198,13 @@ proto = {
 			}
 			returnString = returnString + taskTitle + completionDate + taskTags + "\n";
 		}
+	},
+
+	concat: function(){
+		var index;
+		for (index = 0; index < arguments.length; index += 1){
+			this.addOneTask(arguments[index]);
+		}
 	}
 };
 
