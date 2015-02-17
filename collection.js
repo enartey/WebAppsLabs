@@ -14,13 +14,14 @@ Task = require("./task");
 
 function makeNewCollection(arr) {
 	"use strict";
-	taskCollectionObj = Object.create(proto);
 	if(arr === undefined){
+		taskCollectionObj = Object.create(proto);
 		Object.defineProperty(taskCollectionObj, "values", {
 		writable: false,
 		value: []
 	});
 	} else if (Array.isArray(arr)){
+		taskCollectionObj = Object.create(proto);
 		Object.defineProperty(taskCollectionObj, "values", {
 			writable: false,
 			value: arr.forEach(function(element){
@@ -185,9 +186,18 @@ proto = {
 
 	print: function(){
 		"use strict";
-		var returnString, taskTitle, taskCompleted, completionDate, tasktags;
-		//for(index = 0; index < )
-		//taskTitle = 
+		var index, tagIndex, returnString, taskTitle, completionDate, tasktags;
+		for (index = 0; index < this.values.length; index += 1){
+			taskTitle = this.values[index].title;
+			if (!(this.values[index].completedTime === null)){
+				completionDate = this.values[index].completedTime;
+			}
+			if( this.values[index].tags.length > 0){
+				for(tagIndex = 0; tagIndex < this.values[index].tags.length; tagIndex += 1){
+
+				}
+			}
+		}
 	}
 };
 
