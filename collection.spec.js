@@ -3,7 +3,7 @@
  *
  * Test file for your collection class
  */
-var expect, Task, TaskCollection;
+var expect, Task, TaskCollection, c, o;
 
 expect = require('./chai.js').expect;
 
@@ -23,7 +23,8 @@ describe("makeNewCollection constructor", function(){
 	});
 
 	it("values is an empty array", function(){
-
+		expect(c.values).to.be.an('array');
+		expect(c.values.length).to.equal(0);
 	});
 });
 
