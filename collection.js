@@ -14,14 +14,13 @@ Task = require("./task");
 
 function makeNewCollection(arr) {
 	"use strict";
+	taskCollectionObj = Object.create(proto);
 	if (arr === "undefined"){
-		taskCollectionObj = Object.create(proto);
 		Object.defineProperty(taskCollectionObj, "values", {
 		writable: false,
 		value: []
 	});
 	} else if (Array.isArray(arr)){
-		taskCollectionObj = Object.create(proto);
 		Object.defineProperty(taskCollectionObj, "values", {
 			writable: false,
 			value: arr.forEach(function(element){
@@ -194,7 +193,7 @@ proto = {
 			}
 			if( this.values[index].tags.length > 0){
 				for(tagIndex = 0; tagIndex < this.values[index].tags.length; tagIndex += 1){
-
+					tasktags = tasktags + "#"
 				}
 			}
 		}
