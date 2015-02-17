@@ -203,8 +203,9 @@ proto = {
 	concat: function(){
 		var index;
 		for (index = 0; index < arguments.length; index += 1){
-			this.addOneTask(arguments[index]);
+			this.addOneTask(arguments[ index ]);
 		}
+		return this;
 	}
 };
 
