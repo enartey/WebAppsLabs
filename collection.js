@@ -185,17 +185,18 @@ proto = {
 
 	print: function(){
 		"use strict";
-		var index, tagIndex, returnString, taskTitle, completionDate, tasktags;
+		var index, tagIndex, returnString, taskTitle, completionDate, taskTags;
 		for (index = 0; index < this.values.length; index += 1){
-			taskTitle = this.values[index].title;
-			if (!(this.values[index].completedTime === null)){
-				completionDate = this.values[index].completedTime;
+			taskTitle = this.values[ index ].title + " ";
+			if (!(this.values[ index ].completedTime === null)){
+				completionDate = this.values[ index ].completedTime + " ";
 			}
-			if( this.values[index].tags.length > 0){
-				for(tagIndex = 0; tagIndex < this.values[index].tags.length; tagIndex += 1){
-					tasktags = tasktags + "#"
+			if (this.values[ index ].tags.length > 0){
+				for (tagIndex = 0; tagIndex < this.values[ index ].tags.length; tagIndex += 1){
+					taskTags = taskTags + " #" + this.values[ index ].tags[ tagIndex ];
 				}
 			}
+			returnString = returnString + taskTitle + completionDate + taskTags + "\n";
 		}
 	}
 };
