@@ -15,7 +15,7 @@ Task = require("./task");
 function makeNewCollection(arr) {
 	"use strict";
 	taskCollectionObj = Object.create(proto);
-	if (arr === "undefined"){
+	if (arr === undefined){
 		Object.defineProperty(taskCollectionObj, "values", {
 		writable: false,
 		value: []
