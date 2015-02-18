@@ -73,10 +73,10 @@ function findTypeOfArg(arg, arrTask){
 
 	function removeOneTask(num, that){
 		"use strict";
-		var filteredValues, index;
-		for(index = 0; index < that.values.length; index += 1){
-			if(that.values[index].id === num){
-				that.values.splice(index,1);
+		var index;
+		for (index = 0; index < that.values.length; index += 1){
+			if (that.values[ index ].id === num){
+				that.values.splice(index, 1);
 			}
 		}
 		return that;
