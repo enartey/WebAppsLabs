@@ -42,8 +42,7 @@ describe("proto methods", function(){
 		expect(c.values.length).to.equal(0);
 		c.add(o);
 		expect(c.values.length).to.equal(1);
-		console.log(o.id() + " object id number passed into remove");
-		c.remove(2);
+		c.remove(1);
 		expect(c.values.length).to.equal(0);
 	});
 });

@@ -74,19 +74,9 @@ function findTypeOfArg(arg, arrTask){
 	function removeOneTask(num, that){
 		"use strict";
 		var filteredValues, index;
-		console.log(that.values.length + " values length");
 		for(index = 0; index < that.values.length; index += 1){
-			console.log("for loop");
-			console.log(that.values[index].id() + " value of object at index " + index);
-			console.log(num + "value of number passed into removeOneTask");
-			if(that.values[index].id() === num){
-				console.log("asasa");
-				console.log(that.values);
+			if(that.values[index].id === num){
 				that.values.splice(index,1);
-				console.log(that.values);
-				//filteredValues = that.values.filter(function(){
-					//return !that.values[index];
-				//});
 			}
 		}
 		return that;
@@ -149,7 +139,6 @@ proto = {
 		"use strict";
 		var index, that = this, newCollection;
 		if (typeof num === "number"){
-			console.log(num + " value of number passed into remove");
 			removeOneTask(num, that);
 		} else {
 			for (index = 0; index < num.length; index += 1){
