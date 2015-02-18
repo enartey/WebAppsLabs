@@ -38,11 +38,12 @@ describe("proto methods", function(){
 		o = Task.new();
 	});
 
-	it("length, addOneTask, removeOneTask", function(){
+	it("length, add, remove", function(){
 		expect(c.values.length).to.equal(0);
-		c.addOneTask(o);
+		c.add(o);
 		expect(c.values.length).to.equal(1);
-		c.removeOneTask(o.id);
+		console.log(o.id() + " object id number passed into remove");
+		c.remove(2);
 		expect(c.values.length).to.equal(0);
 	});
 });

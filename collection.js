@@ -63,19 +63,33 @@ function findTypeOfArg(arg, arrTask){
 	return null;
 	}
 
-	function addOneTask(o){
+	function addOneTask(o, that){
 		"use strict";
-		if (!(o.id in this.values)){
-		this.values.push(o);
+		if (!(o.id in that.values)){
+			that.values.push(o);
 		}
-		return this;
+		return that;
 	}
 
-	function removeOneTask(num){
+	function removeOneTask(num, that){
 		"use strict";
-		this.values = this.values.filter(function(){
-			return !this.values.id === num;
-		});
+		var filteredValues, index;
+		console.log(that.values.length + " values length");
+		for(index = 0; index < that.values.length; index += 1){
+			console.log("for loop");
+			console.log(that.values[index].id() + " value of object at index " + index);
+			console.log(num + "value of number passed into removeOneTask");
+			if(that.values[index].id() === num){
+				console.log("asasa");
+				console.log(that.values);
+				that.values.splice(index,1);
+				console.log(that.values);
+				//filteredValues = that.values.filter(function(){
+					//return !that.values[index];
+				//});
+			}
+		}
+		return that;
 	}
 
 
@@ -114,11 +128,12 @@ proto = {
 
 	add: function(o){
 		"use strict";
+		var that = this;
 		if (typeof o === "object"){
-			addOneTask(o);
+			addOneTask(o, that);
 		} else {
 			o.forEach(function(element){
-				addOneTask(element);
+				addOneTask(element, that);
 			});
 		}
 	},
@@ -132,14 +147,16 @@ proto = {
 
 	remove: function(num){
 		"use strict";
-		var index;
+		var index, that = this, newCollection;
 		if (typeof num === "number"){
-			removeOneTask(num);
+			console.log(num + " value of number passed into remove");
+			removeOneTask(num, that);
 		} else {
 			for (index = 0; index < num.length; index += 1){
-				removeOneTask(num[ index ]);
+				removeOneTask(num[ index ], that);
 			}
 		}
+		return newCollection;
 	},
 
 	filter: function(arg){
