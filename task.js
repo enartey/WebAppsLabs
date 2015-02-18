@@ -4,7 +4,7 @@
  * Contains implementation for a "task" "class"
  */
 
-var Task, proto, idNum = 0, task, obj;
+var Task, proto, idNum = 0, obj;
 
 // Hrelper method. You should not need to change it.
 // Use it in makeTaskFromString
@@ -24,17 +24,16 @@ function processString(s) {
 /*
  *       Constructors
  */
-
 function makeNewTask() {
    "use strict";
+
+   idNum += 1;
+
    obj = Object.create(proto);
 
    Object.defineProperty(obj, "id", {
       enumerable: true,
-      value: function() {
-       idNum += 1;
-       return idNum;
-    }
+      value: idNum
    });
 
    obj.title = "";
