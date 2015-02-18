@@ -91,12 +91,12 @@ proto = {
    // Add instance methods here
    length: function(){
 		"use strict";
-		return this.length;
+		return this.values.length;
 		},
 
 	isEmpty: function(){
 		"use strict";
-		if (this.length <= 0){
+		if (this.values.length <= 0){
 		return true;
 		}
 		return false;

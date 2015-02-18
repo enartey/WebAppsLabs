@@ -38,11 +38,14 @@ describe("proto methods", function(){
 		o = Task.new();
 	});
 
-	it("length, add, remove", function(){
+	it("length, add, remove, isEmpty", function(){
 		expect(c.values.length).to.equal(0);
 		c.add(o);
-		expect(c.values.length).to.equal(1);
+		expect(c.length()).to.equal(1);
+		expect(c.isEmpty()).to.equal(false);
 		c.remove(1);
 		expect(c.values.length).to.equal(0);
+		expect(c.length()).to.equal(0);
+		expect(c.isEmpty()).to.equal(true);
 	});
 });
