@@ -201,7 +201,7 @@ proto = {
 	},
 
 	concat: function(){
-		"use strict"
+		"use strict";
 		var index;
 		for (index = 0; index < arguments.length; index += 1){
 			this.addOneTask(arguments[ index ]);
