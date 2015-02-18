@@ -3,16 +3,19 @@
  *
  * Test file for your collection class
  */
+
+ /* eslint-env node,mocha */
 var expect, Task, TaskCollection, c, o;
 
-expect = require('./chai.js').expect;
+expect = require("./chai.js").expect;
 
-Task = require('./task.js');
-TaskCollection = require('./collection.js');
+Task = require("./task.js");
+TaskCollection = require("./collection.js");
 
 // ADD YOUR TESTS HERE
 
 describe("makeNewCollection constructor", function(){
+	"use strict";
 	beforeEach(function(){
 		c = TaskCollection.new();
 	});
@@ -23,12 +26,13 @@ describe("makeNewCollection constructor", function(){
 	});
 
 	it("values is an empty array", function(){
-		expect(c.values).to.be.an('array');
+		expect(c.values).to.be.an("array");
 		expect(c.values.length).to.equal(0);
 	});
 });
 
 describe("proto methods", function(){
+	"use strict";
 	beforeEach(function(){
 		c = TaskCollection.new();
 		o = Task.new();
