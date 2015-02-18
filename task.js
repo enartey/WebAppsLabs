@@ -48,7 +48,6 @@ function makeNewTask() {
    });
 
    Object.preventExtensions(obj);
-   console.log(obj);
    return obj;
 }
 
