@@ -39,10 +39,10 @@ describe("proto methods", function(){
 	});
 
 	it("length, addOneTask, removeOneTask", function(){
-		expect(c.length()).to.equal(0);
+		expect(c.values.length).to.equal(0);
 		c.addOneTask(o);
-		expect(c.length()).to.equal(1);
+		expect(c.values.length).to.equal(1);
 		c.removeOneTask(o.id);
-		expect(c.length()).to.equal(0);
+		expect(c.values.length).to.equal(0);
 	});
 });
