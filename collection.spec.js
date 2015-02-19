@@ -29,6 +29,12 @@ describe("makeNewCollection constructor", function(){
 		expect(c.values).to.be.an("array");
 		expect(c.values.length).to.equal(0);
 	});
+
+	/*it("values takes a given array correctly", function(){
+		var a = [Task.new(), Task.new(), Task.new()], t;
+		t = TaskCollection.new(a);
+		expect(t.values.length).to.equal(3);
+	});*/
 });
 
 describe("proto methods", function(){
@@ -40,6 +46,7 @@ describe("proto methods", function(){
 
 	it("length, add, remove, isEmpty", function(){
 		expect(c.values.length).to.equal(0);
+		expect(c.isEmpty()).to.equal(true);
 		c.add(o);
 		expect(c.length()).to.equal(1);
 		expect(c.isEmpty()).to.equal(false);
@@ -47,5 +54,35 @@ describe("proto methods", function(){
 		expect(c.values.length).to.equal(0);
 		expect(c.length()).to.equal(0);
 		expect(c.isEmpty()).to.equal(true);
+	});
+
+	it("get", function(){
+		var x = Task.new();
+		o.setTitle("OH");
+		x.setTitle("EX");
+		c.add(o);
+		c.add(x);
+		// console.log(o.id, o.title, x.id, x.title);
+		expect(c.get(2)).to.equal(o);
+		expect(c.get("OH")).to.equal(o);
+		expect(c.get(3)).to.equal(x);
+		expect(c.get("EX")).to.equal(x);
+		expect(c.get("nothing")).to.equal(null);
+		expect(c.get(69)).to.equal(null);
+	});
+
+	it("has", function(){
+		var x = Task.new();
+		o.setTitle("OH");
+		x.setTitle("EX");
+		c.add(o);
+		c.add(x);
+		// console.log(o.id, o.title, x.id, x.title);
+		expect(c.has(2)).to.equal(true);
+		expect(c.has("OH")).to.equal(true);
+		expect(c.has(3)).to.equal(true);
+		expect(c.has("EX")).to.equal(true);
+		expect(c.has("nothing")).to.equal(false);
+		expect(c.has(69)).to.equal(false);
 	});
 });
