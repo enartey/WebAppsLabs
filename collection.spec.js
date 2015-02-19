@@ -140,7 +140,6 @@ describe("proto methods", function(){
 		c.add(b);
 		c.add(x);;
 		var groups = c.groupByTag();
-		console.log(groups)
 
 	});
 
