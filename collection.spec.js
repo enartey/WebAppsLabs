@@ -30,7 +30,7 @@ describe("makeNewCollection constructor", function(){
 		expect(c.values.length).to.equal(0);
 	});
 	it("values takes a given array correctly", function(){
-		var a = [Task.new(), Task.new(), Task.new()], t;
+		var a = [ Task.new(), Task.new(), Task.new() ], t;
 		t = TaskCollection.new(a);
 		expect(t.values.length).to.equal(3);
 	});
@@ -138,9 +138,8 @@ describe("proto methods", function(){
 		c.add(o);
 		c.add(a);
 		c.add(b);
-		c.add(x);;
-		var groups = c.groupByTag();
-
+		c.add(x);
+		c.groupByTag();
 	});
 
 	it("print", function(){
