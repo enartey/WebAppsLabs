@@ -116,6 +116,6 @@ describe("proto methods", function(){
 		c.add(x);
 		console.log(o.id, o.title, x.id, x.title);
 		newCollection = c.filter([ 10, 11 ]);
-		console.log(c);
+		console.log(newCollection.length());
 	});
 });

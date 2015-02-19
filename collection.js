@@ -154,11 +154,11 @@ proto = {
 		if (Array.isArray(arg)){
 			for (index = 0; index < arg.length; index += 1){
 				gottenElement = this.get(arg[ index ]);
-				newCollection = newCollection.add(gottenElement);
+				newCollection.add(gottenElement);
 			}
 		} else {
 			gottenElement = this.get(arg);
-			newCollection = newCollection.add(gottenElement);
+			newCollection.add(gottenElement);
 		}
 		return newCollection;
 	},
