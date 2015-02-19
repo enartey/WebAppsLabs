@@ -109,4 +109,13 @@ describe("proto methods", function(){
 		c.remove([ 8, 9 ]);
 		expect(c.values.length).to.equal(0);
 	});
+
+	it("filter", function(){
+		var x = Task.new(), newCollection;
+		c.add(o);
+		c.add(x);
+		console.log(o.id, o.title, x.id, x.title);
+		newCollection = c.filter([ 10, 11 ]);
+		console.log(c);
+	});
 });
