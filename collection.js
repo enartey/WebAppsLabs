@@ -130,8 +130,8 @@ proto = {
 
 	new: function(){
 		"use strict";
-		var newTaskObject = Task.new;
-		this.addOneTask(newTaskObject);
+		var newTaskObject = Task.new();
+		addOneTask(newTaskObject, this);
 		return newTaskObject;
 	},
 
