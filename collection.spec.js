@@ -164,16 +164,15 @@ describe("proto methods", function(){
 
 	it("concat", function(){
 		var a = Task.new(), b = Task.new(), x = Task.new(), C = TaskCollection.new();
+		o.setTitle("o");
+		a.setTitle("a");
+		b.setTitle("b");
+		x.setTitle("x");
 		c.add(o);
 		c.add(a);
 		c.add(b);
 		c.add(x);
-		console.log("c VALUES: ", c.values);
-		console.log("C VALUES: ", C.values);
-		console.log("------AFTER-CONCAT------")
 		C.concat(c);
-		console.log("c VALUES: ", c.values);
-		console.log("C VALUES: ", C.values);
 		expect(C.values).to.deep.equal(c.values);
 	});
 });

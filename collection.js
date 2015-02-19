@@ -175,8 +175,7 @@ proto = {
 	groupByTag: function(){
 		"use strict";
 		var index, returnObj = {}, taskArray;
-		taskArray = this;
-		taskArray.forEach(function(task){
+		this.forEach(function(task){
 			for (index = 0; index < task.tags.length; index += 1){
 				if (!returnObj.hasOwnProperty(task.tags[ index ])){
 					returnObj[ task.tags[ index ] ] = TaskCollection.new();
@@ -211,9 +210,11 @@ proto = {
 
 	concat: function(){
 		"use strict";
-		var index;
+		var index, indexVal;
 		for (index = 0; index < arguments.length; index += 1){
-			addOneTask(arguments[ index ], this);
+			for(indexVal = 0; indexVal < arguments[ index ].values.length; indexVal += 1){
+				addOneTask(arguments[ index ].values[indexVal], this);
+			}
 		}
 		return this;
 	}
