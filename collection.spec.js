@@ -92,7 +92,6 @@ describe("proto methods", function(){
 		var x = Task.new();
 		c.add(o);
 		c.add(x);
-		// console.log(o,x);
 		expect(c.values.length).to.equal(2);
 		c.remove(9);
 		expect(c.get(8)).to.equal(o);
@@ -120,7 +119,6 @@ describe("proto methods", function(){
 		c.add(a);
 		c.add(b);
 		c.add(x);
-		// console.log(c.values);
 		f = function(task){
 			task.setTitle("stalin");
 		};
