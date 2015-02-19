@@ -173,7 +173,13 @@ describe("proto methods", function(){
 	});
 
 	it("concat", function(){
-
+		var a = Task.new(), b = Task.new(), x = Task.new(), C = TaskCollection.new();
+		c.add(o);
+		c.add(a);
+		c.add(b);
+		c.add(x);
+		C.concat(c);
+		console.log(C);
 	});
 
 });
