@@ -200,7 +200,6 @@ proto = {
 			taskTitle = this.values[ index ].title + " ";
 			if (this.values[ index ].completedTime != null){
 				date = this.values[ index ].completedTime;
-				console.log(date);
 				completionDate = "(" + date.getFullYear() + "/" + date.getMonth() + "/" + date.getDate() + ")" + " ";
 			}
 			if (this.values[ index ].tags.length > 0){
@@ -217,7 +216,7 @@ proto = {
 		"use strict";
 		var index;
 		for (index = 0; index < arguments.length; index += 1){
-			this.addOneTask(arguments[ index ]);
+			addOneTask(arguments[ index ], this);
 		}
 		return this;
 	}

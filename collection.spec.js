@@ -168,7 +168,6 @@ describe("proto methods", function(){
 		c.add(b);
 		c.add(x);
 		output = c.print();
-
 	});
 
 	it("concat", function(){
