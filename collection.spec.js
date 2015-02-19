@@ -87,7 +87,11 @@ describe("proto methods", function(){
 	});
 
 	it("new", function(){
-		console.log(c.new());
-		// expect(c.new()).to.equal(o);
+		expect(c.new()).to.be.an("Object");
+		expect(c.values.length).to.equal(1);
+	});
+
+	it("remove", function(){
+		var x = Task.new();
 	});
 });
