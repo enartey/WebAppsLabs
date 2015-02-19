@@ -134,12 +134,14 @@ describe("proto methods", function(){
 		a.addTags([ "a", "b", "c", "d" ]);
 		b.addTags([ "a", "b" ]);
 		x.addTags([ "c", "d" ]);
-		a.addTags([ "a", "b", "c", "d" ]);
+		o.addTags([ "a", "b", "c", "d" ]);
 		c.add(o);
 		c.add(a);
 		c.add(b);
-		c.add(x);
-		c.groupByTag();
+		c.add(x);;
+		var groups = c.groupByTag();
+		console.log(groups)
+
 	});
 
 	it("print", function(){
