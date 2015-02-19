@@ -120,15 +120,15 @@ describe("proto methods", function(){
 	});
 
 	it("forEach", function(){
-		var a = Task.new(), b = Task.new(), x = Task.new();
+		var a = Task.new(), b = Task.new(), x = Task.new(), f;
 		c.add(o);
 		c.add(a);
 		c.add(b);
 		c.add(x);
 		// console.log(c.values);
-		var f = function(task){
+		f = function(task){
 			task.setTitle("stalin");
-		}
+		};
 		c.forEach(f);
 		expect(o.title).to.equal("stalin");
 		expect(a.title).to.equal("stalin");
@@ -137,7 +137,7 @@ describe("proto methods", function(){
 	});
 
 	it("groupByTag", function(){
-		var a = Task.new(), b = Task.new(), x = Task.new();
+		var a = Task.new(), b = Task.new(), x = Task.new(), list;
 		a.addTags([ "a", "b", "c", "d" ]);
 		b.addTags([ "a", "b" ]);
 		x.addTags([ "c", "d" ]);
@@ -146,7 +146,7 @@ describe("proto methods", function(){
 		c.add(a);
 		c.add(b);
 		c.add(x);
-		var list = c.groupByTag();
+		list = c.groupByTag();
 
 	});
 
@@ -154,19 +154,21 @@ describe("proto methods", function(){
 		var output;
 		var a = Task.new(), b = Task.new(), x = Task.new();
 		a.addTags([ "a", "b", "c", "d" ]);
+		a.completedTime = new Date();
 		b.addTags([ "a", "b" ]);
+		b.completedTime = new Date();
 		x.addTags([ "c", "d" ]);
 		o.addTags([ "a", "b", "c", "d" ]);
-		a.setTitle("A")
-		b.setTitle("B")
-		x.setTitle("X")
-		o.setTitle("O")
+		a.setTitle("A");
+		b.setTitle("B");
+		x.setTitle("X");
+		o.setTitle("O");
 		c.add(o);
 		c.add(a);
 		c.add(b);
 		c.add(x);
 		output = c.print();
-		console.log("THIS IS the COLLECTION:  ", c);
+		//console.log("THIS IS the COLLECTION:  ", c.values);
 		console.log("THIS IS THE OUTPUT OF PRINT():  ", c.print());
 		// console.log("HERE###", output);
 

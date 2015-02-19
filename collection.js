@@ -175,11 +175,12 @@ proto = {
 	groupByTag: function(){
 		"use strict";
 		var index, returnObj = {}, taskArray, taskIndex;
-		returnObj.keys = null;
+		returnObj.keys = "";
 		returnObj.values = makeNewCollection();
 		taskArray = this.values;
 		for (index = 0; index < taskArray.length; index += 1){
-			if (!(taskArray[ index ] in returnObj.keys)){
+			/*if (!(taskArray[ index ] in returnObj.keys)){*/
+			if (!(returnObj.keys.hasOwnProperty(taskArray[ index ]))){
 				returnObj.keys.push(taskArray[ index ]);
 			}
 			for (taskIndex = 0; taskIndex < taskArray.tags.length; taskIndex += 1){
@@ -191,11 +192,16 @@ proto = {
 
 	print: function(){
 		"use strict";
-		var index, tagIndex, returnString, taskTitle, completionDate, taskTags;
+		var index, tagIndex, returnString = "", taskTitle, completionDate, taskTags, date;
 		for (index = 0; index < this.values.length; index += 1){
+			taskTitle = "";
+			completionDate = "";
+			taskTags = "";
 			taskTitle = this.values[ index ].title + " ";
-			if (!(this.values[ index ].completedTime === null)){
-				completionDate = this.values[ index ].completedTime + " ";
+			if (this.values[ index ].completedTime != null){
+				date = this.values[ index ].completedTime;
+				console.log(date);
+				completionDate = "(" + date.getFullYear() + "/" + date.getMonth() + "/" + date.getDate() + ")" + " ";
 			}
 			if (this.values[ index ].tags.length > 0){
 				for (tagIndex = 0; tagIndex < this.values[ index ].tags.length; tagIndex += 1){
@@ -204,6 +210,7 @@ proto = {
 			}
 			returnString = returnString + taskTitle + completionDate + taskTags + "\n";
 		}
+		return returnString;
 	},
 
 	concat: function(){
