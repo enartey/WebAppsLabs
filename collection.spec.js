@@ -93,5 +93,20 @@ describe("proto methods", function(){
 
 	it("remove", function(){
 		var x = Task.new();
+		c.add(o);
+		c.add(x);
+		// console.log(o,x);
+		expect(c.values.length).to.equal(2);
+		c.remove(9);
+		expect(c.get(8)).to.equal(o);
+		expect(c.get(9)).to.equal(null);
+		c.remove(8);
+		expect(c.get(8)).to.equal(null);
+		expect(c.values.length).to.equal(0);
+		c.add(o);
+		c.add(x);
+		expect(c.values.length).to.equal(2);
+		c.remove([ 8, 9 ]);
+		expect(c.values.length).to.equal(0);
 	});
 });
