@@ -168,9 +168,6 @@ describe("proto methods", function(){
 		c.add(b);
 		c.add(x);
 		output = c.print();
-		//console.log("THIS IS the COLLECTION:  ", c.values);
-		console.log("THIS IS THE OUTPUT OF PRINT():  ", c.print());
-		// console.log("HERE###", output);
 
 	});
 
