@@ -174,19 +174,18 @@ proto = {
 
 	groupByTag: function(){
 		"use strict";
-		var index, returnObj = {}, taskArray, taskIndex;
+		var index, returnObj = {}, taskArray;
 		returnObj.keys = "";
 		returnObj.values = makeNewCollection();
 		taskArray = this.values;
-		for (index = 0; index < taskArray.length; index += 1){
-			/*if (!(taskArray[ index ] in returnObj.keys)){*/
-			if (!(returnObj.keys.hasOwnProperty(taskArray[ index ]))){
-				returnObj.keys.push(taskArray[ index ]);
+		taskArray.forEach(function(task){
+			for (index = 0; index < task.tags.length; index += 1){
+				if (!returnObj.hasOwnProperty(task.tags[ index ])){
+					returnObj[ task.tags[ index ] ] = TaskCollection.new();
+				}
+				returnObj[ task.tags[ index ] ].add(task);
 			}
-			for (taskIndex = 0; taskIndex < taskArray.tags.length; taskIndex += 1){
-				returnObj.values.addOneTask(taskArray.tags[ taskIndex ]);
-			}
-		}
+		});
 		return returnObj;
 	},
 

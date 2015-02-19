@@ -62,7 +62,6 @@ describe("proto methods", function(){
 		x.setTitle("EX");
 		c.add(o);
 		c.add(x);
-		// console.log(o.id, o.title, x.id, x.title);
 		expect(c.get(2)).to.equal(o);
 		expect(c.get("OH")).to.equal(o);
 		expect(c.get(3)).to.equal(x);
@@ -77,7 +76,6 @@ describe("proto methods", function(){
 		x.setTitle("EX");
 		c.add(o);
 		c.add(x);
-		// console.log(o.id, o.title, x.id, x.title);
 		expect(c.has(4)).to.equal(true);
 		expect(c.has("OH")).to.equal(true);
 		expect(c.has(5)).to.equal(true);
@@ -111,12 +109,10 @@ describe("proto methods", function(){
 	});
 
 	it("filter", function(){
-		var x = Task.new(), newCollection;
+		var x = Task.new();
 		c.add(o);
 		c.add(x);
-		// console.log(o.id, o.title, x.id, x.title);
-		newCollection = c.filter([ 10, 11 ]);
-		// console.log(newCollection.length());
+		c.filter([ 10, 11 ]);
 	});
 
 	it("forEach", function(){
@@ -137,7 +133,7 @@ describe("proto methods", function(){
 	});
 
 	it("groupByTag", function(){
-		var a = Task.new(), b = Task.new(), x = Task.new(), list;
+		var a = Task.new(), b = Task.new(), x = Task.new();
 		a.addTags([ "a", "b", "c", "d" ]);
 		b.addTags([ "a", "b" ]);
 		x.addTags([ "c", "d" ]);
@@ -146,12 +142,10 @@ describe("proto methods", function(){
 		c.add(a);
 		c.add(b);
 		c.add(x);
-		list = c.groupByTag();
-
+		c.groupByTag();
 	});
 
 	it("print", function(){
-		var output;
 		var a = Task.new(), b = Task.new(), x = Task.new();
 		a.addTags([ "a", "b", "c", "d" ]);
 		a.completedTime = new Date();
@@ -167,7 +161,7 @@ describe("proto methods", function(){
 		c.add(a);
 		c.add(b);
 		c.add(x);
-		output = c.print();
+		c.print();
 	});
 
 	it("concat", function(){
@@ -177,7 +171,6 @@ describe("proto methods", function(){
 		c.add(b);
 		c.add(x);
 		C.concat(c);
-		console.log(C);
 	});
 
 });
