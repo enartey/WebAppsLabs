@@ -78,11 +78,16 @@ describe("proto methods", function(){
 		c.add(o);
 		c.add(x);
 		// console.log(o.id, o.title, x.id, x.title);
-		expect(c.has(2)).to.equal(true);
+		expect(c.has(4)).to.equal(true);
 		expect(c.has("OH")).to.equal(true);
-		expect(c.has(3)).to.equal(true);
+		expect(c.has(5)).to.equal(true);
 		expect(c.has("EX")).to.equal(true);
 		expect(c.has("nothing")).to.equal(false);
 		expect(c.has(69)).to.equal(false);
+	});
+
+	it("new", function(){
+		console.log(c.new());
+		// expect(c.new()).to.equal(o);
 	});
 });
