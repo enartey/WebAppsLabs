@@ -114,9 +114,9 @@ describe("proto methods", function(){
 		var x = Task.new(), newCollection;
 		c.add(o);
 		c.add(x);
-		console.log(o.id, o.title, x.id, x.title);
+		// console.log(o.id, o.title, x.id, x.title);
 		newCollection = c.filter([ 10, 11 ]);
-		console.log(newCollection.length());
+		// console.log(newCollection.length());
 	});
 
 	it("forEach", function(){
@@ -125,7 +125,7 @@ describe("proto methods", function(){
 		c.add(a);
 		c.add(b);
 		c.add(x);
-		console.log(c.values);
+		// console.log(c.values);
 		var f = function(task){
 			task.setTitle("stalin");
 		}
@@ -148,11 +148,27 @@ describe("proto methods", function(){
 		c.add(x);
 		var list = c.groupByTag();
 
-
-
 	});
 
 	it("print", function(){
+		var output;
+		var a = Task.new(), b = Task.new(), x = Task.new();
+		a.addTags([ "a", "b", "c", "d" ]);
+		b.addTags([ "a", "b" ]);
+		x.addTags([ "c", "d" ]);
+		o.addTags([ "a", "b", "c", "d" ]);
+		a.setTitle("A")
+		b.setTitle("B")
+		x.setTitle("X")
+		o.setTitle("O")
+		c.add(o);
+		c.add(a);
+		c.add(b);
+		c.add(x);
+		output = c.print();
+		console.log("THIS IS the COLLECTION:  ", c);
+		console.log("THIS IS THE OUTPUT OF PRINT():  ", c.print());
+		// console.log("HERE###", output);
 
 	});
 
