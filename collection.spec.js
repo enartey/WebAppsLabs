@@ -118,4 +118,46 @@ describe("proto methods", function(){
 		newCollection = c.filter([ 10, 11 ]);
 		console.log(newCollection.length());
 	});
+
+	it("forEach", function(){
+		var a = Task.new(), b = Task.new(), x = Task.new();
+		c.add(o);
+		c.add(a);
+		c.add(b);
+		c.add(x);
+		console.log(c.values);
+		var f = function(task){
+			task.setTitle("stalin");
+		}
+		c.forEach(f);
+		expect(o.title).to.equal("stalin");
+		expect(a.title).to.equal("stalin");
+		expect(b.title).to.equal("stalin");
+		expect(x.title).to.equal("stalin");
+	});
+
+	it("groupByTag", function(){
+		var a = Task.new(), b = Task.new(), x = Task.new();
+		a.addTags([ "a", "b", "c", "d" ]);
+		b.addTags([ "a", "b" ]);
+		x.addTags([ "c", "d" ]);
+		a.addTags([ "a", "b", "c", "d" ]);
+		c.add(o);
+		c.add(a);
+		c.add(b);
+		c.add(x);
+		var list = c.groupByTag();
+
+
+
+	});
+
+	it("print", function(){
+
+	});
+
+	it("concat", function(){
+
+	});
+
 });
