@@ -29,7 +29,6 @@ describe("makeNewCollection constructor", function(){
 		expect(c.values).to.be.an("array");
 		expect(c.values.length).to.equal(0);
 	});
-
 	/*it("values takes a given array correctly", function(){
 		var a = [Task.new(), Task.new(), Task.new()], t;
 		t = TaskCollection.new(a);
@@ -172,5 +171,4 @@ describe("proto methods", function(){
 		c.add(x);
 		C.concat(c);
 	});
-
 });
