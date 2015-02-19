@@ -110,7 +110,7 @@ proto = {
 
 	has: function(randomEntry){
 		"use strict";
-		if (this.get != null){
+		if (this.get(randomEntry) != null){
 			return true;
 		}
 		return false;
