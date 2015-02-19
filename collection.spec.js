@@ -168,6 +168,12 @@ describe("proto methods", function(){
 		c.add(a);
 		c.add(b);
 		c.add(x);
+		console.log("c VALUES: ", c.values);
+		console.log("C VALUES: ", C.values);
+		console.log("------AFTER-CONCAT------")
 		C.concat(c);
+		console.log("c VALUES: ", c.values);
+		console.log("C VALUES: ", C.values);
+		expect(C.values).to.deep.equal(c.values);
 	});
 });
