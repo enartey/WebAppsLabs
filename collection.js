@@ -23,9 +23,10 @@ function makeNewCollection(arr) {
 	} else if (Array.isArray(arr)){
 		Object.defineProperty(taskCollectionObj, "values", {
 			writable: false,
-			value: arr.forEach(function(element){
-				addOneTask(element);
-			})
+			value: []
+		});
+		arr.forEach(function(element){
+			taskCollectionObj.values.push(element);
 		});
 	}
 	Object.preventExtensions(taskCollectionObj);

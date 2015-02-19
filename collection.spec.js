@@ -49,8 +49,8 @@ describe("proto methods", function(){
 		c.add(o);
 		expect(c.length()).to.equal(1);
 		expect(c.isEmpty()).to.equal(false);
-		c.remove(1);
-		expect(c.values.length).to.equal(0);
+		c.remove(4);
+		expect(c.length()).to.equal(0);
 		expect(c.length()).to.equal(0);
 		expect(c.isEmpty()).to.equal(true);
 	});
@@ -61,9 +61,9 @@ describe("proto methods", function(){
 		x.setTitle("EX");
 		c.add(o);
 		c.add(x);
-		expect(c.get(2)).to.equal(o);
+		expect(c.get(5)).to.equal(o);
 		expect(c.get("OH")).to.equal(o);
-		expect(c.get(3)).to.equal(x);
+		expect(c.get(6)).to.equal(x);
 		expect(c.get("EX")).to.equal(x);
 		expect(c.get("nothing")).to.equal(null);
 		expect(c.get(69)).to.equal(null);
@@ -168,12 +168,7 @@ describe("proto methods", function(){
 		c.add(a);
 		c.add(b);
 		c.add(x);
-		console.log("c VALUES: ", c.values);
-		console.log("C VALUES: ", C.values);
-		console.log("------AFTER-CONCAT------")
 		C.concat(c);
-		console.log("c VALUES: ", c.values);
-		console.log("C VALUES: ", C.values);
 		expect(C.values).to.deep.equal(c.values);
 	});
 });
