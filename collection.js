@@ -175,9 +175,7 @@ proto = {
 	groupByTag: function(){
 		"use strict";
 		var index, returnObj = {}, taskArray;
-		//returnObj.keys = "";
-		//returnObj.values = makeNewCollection();
-		taskArray = this.values;
+		taskArray = this;
 		taskArray.forEach(function(task){
 			for (index = 0; index < task.tags.length; index += 1){
 				if (!returnObj.hasOwnProperty(task.tags[ index ])){
