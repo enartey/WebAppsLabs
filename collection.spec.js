@@ -29,11 +29,11 @@ describe("makeNewCollection constructor", function(){
 		expect(c.values).to.be.an("array");
 		expect(c.values.length).to.equal(0);
 	});
-	/*it("values takes a given array correctly", function(){
+	it("values takes a given array correctly", function(){
 		var a = [Task.new(), Task.new(), Task.new()], t;
 		t = TaskCollection.new(a);
 		expect(t.values.length).to.equal(3);
-	});*/
+	});
 });
 
 describe("proto methods", function(){
@@ -164,15 +164,16 @@ describe("proto methods", function(){
 
 	it("concat", function(){
 		var a = Task.new(), b = Task.new(), x = Task.new(), C = TaskCollection.new();
-		o.setTitle("o");
-		a.setTitle("a");
-		b.setTitle("b");
-		x.setTitle("x");
 		c.add(o);
 		c.add(a);
 		c.add(b);
 		c.add(x);
+		console.log("c VALUES: ", c.values);
+		console.log("C VALUES: ", C.values);
+		console.log("------AFTER-CONCAT------")
 		C.concat(c);
+		console.log("c VALUES: ", c.values);
+		console.log("C VALUES: ", C.values);
 		expect(C.values).to.deep.equal(c.values);
 	});
 });
