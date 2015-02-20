@@ -75,9 +75,10 @@ describe("proto methods", function(){
 		x.setTitle("EX");
 		c.add(o);
 		c.add(x);
-		expect(c.has(4)).to.equal(true);
+		// console.log(o, x);
+		expect(c.has(7)).to.equal(true);
 		expect(c.has("OH")).to.equal(true);
-		expect(c.has(5)).to.equal(true);
+		expect(c.has(8)).to.equal(true);
 		expect(c.has("EX")).to.equal(true);
 		expect(c.has("nothing")).to.equal(false);
 		expect(c.has(69)).to.equal(false);
@@ -92,25 +93,29 @@ describe("proto methods", function(){
 		var x = Task.new();
 		c.add(o);
 		c.add(x);
+		// console.log(o, x);
 		expect(c.values.length).to.equal(2);
-		c.remove(9);
-		expect(c.get(8)).to.equal(o);
-		expect(c.get(9)).to.equal(null);
-		c.remove(8);
-		expect(c.get(8)).to.equal(null);
+		c.remove(12);
+		expect(c.get(11)).to.equal(o);
+		expect(c.get(12)).to.equal(null);
+		c.remove(11);
+		expect(c.get(11)).to.equal(null);
 		expect(c.values.length).to.equal(0);
 		c.add(o);
 		c.add(x);
 		expect(c.values.length).to.equal(2);
-		c.remove([ 8, 9 ]);
+		c.remove([ 11, 12 ]);
 		expect(c.values.length).to.equal(0);
 	});
 
 	it("filter", function(){
-		var x = Task.new();
+		var x = Task.new(), newt;
 		c.add(o);
 		c.add(x);
-		c.filter([ 10, 11 ]);
+		// console.log(o, x);
+		 newt = c.filter([ 13, 14 ]);
+		 expect(newt.has(13)).to.equal(true);
+		 expect(newt.has(14)).to.equal(true);
 	});
 
 	it("forEach", function(){
