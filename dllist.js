@@ -37,6 +37,14 @@ proto = {
          return true;
       }
       return false;
+   },
+
+   length: function(){
+      var listLength = 0;
+      while (DLList.next !== DLList) {
+         listLength = listLength + 1;
+         DLList = DLList.next;
+      }
    }
 
 };
