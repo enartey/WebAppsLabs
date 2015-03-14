@@ -32,6 +32,12 @@ function makeNewList() {
 
 proto = {
    // Add instance methods here
+   isEmpty: function(){
+      if (DLList.next === DLList && DLList.prev === DLList){
+         return true;
+      }
+      return false;
+   }
 
 };
 
