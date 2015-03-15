@@ -33,6 +33,7 @@ function makeNewList() {
 proto = {
    // Add instance methods here
    isEmpty: function(){
+      /* use sentinel not list */
       if (DLList.next === DLList && DLList.prev === DLList){
          return true;
       }
@@ -40,12 +41,15 @@ proto = {
    },
 
    length: function(){
-      var listLength = 0;
-      while (DLList.next !== DLList) {
-         listLength = listLength + 1;
-         DLList = DLList.next;
+      var listLength = 0, listNode = this.sentinel.next;
+      if (this.isEmpty()){
+         return listLength;
+      }
+      while (listNode.next !== this.sentinel){
+         listLength += 1;
       }
    }
+
 
 };
 
