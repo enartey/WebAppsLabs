@@ -73,6 +73,10 @@ proto = {
       element.next = item;
       item.next.prev = item;
       return item;
+   },
+
+   unshift: function(value){
+      return this.insertAt(value,this.sentinel);
    }
 
 
