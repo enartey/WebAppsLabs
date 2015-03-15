@@ -51,7 +51,10 @@ proto = {
    },
 
    first: function(){
-
+      if (this.isEmpty()){
+         throw new Error("List is Empty");
+      }
+      return this.sentinel.next;
    }
 
 
