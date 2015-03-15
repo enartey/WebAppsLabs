@@ -40,14 +40,21 @@ proto = {
    },
 
    length: function(){
-      var listLength = 0, listNode = this.sentinel.next;
+      var listLength = 0, item = this.sentinel.next;
       if (this.isEmpty()){
          return listLength;
       }
-      while (listNode.next !== this.sentinel){
+      while (item.next !== this.sentinel){
          listLength += 1;
       }
+      return listLength;
+   },
+
+   first: function(){
+
    }
+
+
 
 
 };
