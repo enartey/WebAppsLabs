@@ -118,7 +118,10 @@ proto = {
    },
 
    isLast: function(item){
-      
+      if (this.isEmpty() === false && item.next === this.sentinel){
+         return true;
+      }
+      return false;
    }
 
 
