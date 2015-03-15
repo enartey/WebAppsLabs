@@ -94,6 +94,13 @@ proto = {
       item.prev.next = item.next;
       item.next.prev = item.prev;
       return item.value;
+   },
+
+   pop: function(){
+      if (this.isEmpty()){
+         throw new Error("Cannot pop. List is Empty");
+      }
+      this.remove(this.sentinel.prev);
    }
 
 
