@@ -76,7 +76,7 @@ proto = {
    },
 
    unshift: function(value){
-      return this.insertAt(value,this.sentinel);
+      return this.insertAt(value, this.sentinel);
    }
 
 
