@@ -58,7 +58,7 @@ proto = {
    },
 
    last: function(){
-      if(this.isEmpty()){
+      if (this.isEmpty()){
          throw new Error("List is Empty");
       }
       return this.sentinel.prev;
@@ -66,8 +66,8 @@ proto = {
 
    insertAt: function(value, element){
       var item = {
-         value: value
-         next: element.next
+         value: value,
+         next: element.next,
          prev: element
       };
       element.next = item;
