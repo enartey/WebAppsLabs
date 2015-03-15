@@ -85,11 +85,16 @@ proto = {
    },
 
    endAt: function(item){
-      item.next = sentinel;
-      sentinel.prev = item;
+      item.next = this.sentinel;
+      this.sentinel.prev = item;
       return this;
-   }
+   },
 
+   remove: function(item){
+      item.prev.next = item.next;
+      item.next.prev = item.prev;
+      return item.value;
+   }
 
 
 
