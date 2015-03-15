@@ -101,6 +101,13 @@ proto = {
          throw new Error("Cannot pop. List is Empty");
       }
       this.remove(this.sentinel.prev);
+   },
+
+   shift: function(){
+      if (this.isEmpty()){
+         throw new Error("Cannot shift. List is Empty");
+      } 
+      this.remove(this.sentinel.next);
    }
 
 
