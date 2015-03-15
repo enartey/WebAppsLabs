@@ -82,6 +82,12 @@ proto = {
    push: function(value){
       var element = this.sentinel.prev;
       return this.insertAt(value, element);
+   },
+
+   endAt: function(item){
+      item.next = sentinel;
+      sentinel.prev = item;
+      return this;
    }
 
 
