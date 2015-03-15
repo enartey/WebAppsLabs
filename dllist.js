@@ -115,6 +115,10 @@ proto = {
          return true;
       }
       return false;
+   },
+
+   isLast: function(item){
+      
    }
 
 
