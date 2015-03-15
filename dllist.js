@@ -33,8 +33,7 @@ function makeNewList() {
 proto = {
    // Add instance methods here
    isEmpty: function(){
-      /* use sentinel not list */
-      if (DLList.next === DLList && DLList.prev === DLList){
+      if (this.sentinel.next === this.sentinel.prev){
          return true;
       }
       return false;
