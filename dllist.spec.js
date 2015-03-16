@@ -41,8 +41,45 @@ describe("proto methods", function(){
 		expect(DL1.last()).to.throw(Error);
 	});
 
-	it("insertAt #76", function(){
+	it.skip("insertAt #76", function(){
 		console.log("look here jackass", DL2);
 		//expect(DL2.insertAt(9,))
 	});
+
+	it("unshift #77", function(){
+
+	});
+
+	it("push #78", function(){
+
+	});
+
+	it("endAt #79", function(){
+
+	});
+
+	it("remove #80", function(){
+
+	});
+
+	it("pop #81", function(){
+
+	});
+
+	it("shift #82", function(){
+
+	});
+
+	it("isFirst #83", function(){
+
+	});
+
+	it("", function(){
+
+	});
+
+	it("", function(){
+
+	});
+
 });
