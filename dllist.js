@@ -16,11 +16,9 @@ function makeNewList() {
    var lst, sentinel;
 
    lst = Object.create(proto);
-   sentinel = {
-      value: null,
-      next: sentinel,
-      prev: sentinel
-   };
+   sentinel = { value: null };
+   sentinel.next = sentinel;
+   sentinel.prev = sentinel;
    lst.sentinel = sentinel;
    return lst;
 }
