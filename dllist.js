@@ -126,6 +126,10 @@ proto = {
 
    Iterator: function(){
       return Iterator.new();
+   },
+
+   forEach: function(f){
+      return Iterator.forEach(f);
    }
 };
 
