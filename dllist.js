@@ -124,8 +124,13 @@ proto = {
       return false;
    },
 
-   Iterator: function(){
-      return Iterator.new();
+   iterator: function(){
+      var item = this.sentinel.next, hasNext;
+      if (this.isLast(item)){
+         hasNext = false;
+      }
+      hasNext = true;
+      return Iterator.new(item, hasNext);
    },
 
    forEach: function(f){
@@ -134,6 +139,10 @@ proto = {
 
    toArray: function(){
       return Iterator.toArray();
+   },
+
+   iterateFrom: function(item){
+
    }
 };
 
