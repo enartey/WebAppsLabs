@@ -16,12 +16,23 @@ describe("proto methods", function(){
 	beforeEach(function(){
 		DL1 = DLList.new();
 		DL2 = DLList.new();
-		DL2.push(arg1);
-		DL2.push(arg2);
+		DL2.push(arg1); //arg 1 is set to 1
+		DL2.push(arg2); //arg 2 is set to 2
 		DL2.push(3);
 	});
 
-	it("isEmpty", function(){
+	it("isEmpty #72", function(){
 		expect(DL1.isEmpty()).to.equal(true);
-	})
+		expect(DL2.isEmpty()).to.equal(false);
+	});
+
+	it("length #73", function(){
+		expect(DL1.length()).to.equal(0);
+		expect(DL2.length()).to.equal(3);
+	});
+
+	it("first #74", function(){
+		expect(DL2.first().value).to.equal(1);
+		expect(DL1.first()).to.throw(Error);
+	});
 });
