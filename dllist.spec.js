@@ -26,7 +26,7 @@ describe("proto methods", function(){
 		expect(DL2.isEmpty()).to.equal(false);
 	});
 
-	it("length #73", function(){
+	it.skip("length #73", function(){
 		expect(DL1.length()).to.equal(0);
 		expect(DL2.length()).to.equal(3);
 	});
@@ -35,4 +35,11 @@ describe("proto methods", function(){
 		expect(DL2.first().value).to.equal(1);
 		expect(DL1.first()).to.throw(Error);
 	});
+
+	it("last #75", function(){
+		expect(DL2.last().value).to.equal(3);
+		expect(DL1.last()).to.throw(Error);
+	});
+
+
 });
