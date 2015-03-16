@@ -47,7 +47,12 @@ describe("proto methods", function(){
 	});
 
 	it("unshift #77", function(){
-
+		DL2.unshift(4);
+		expect(DL2.first().value).to.equal(4);
+		expect(DL2.last().value).to.equal(3);
+		DL2.unshift(5);
+		expect(DL2.first().value).to.equal(5);
+		expect(DL2.last().value).to.equal(3);
 	});
 
 	it("push #78", function(){
@@ -74,11 +79,27 @@ describe("proto methods", function(){
 
 	});
 
-	it("", function(){
+	it("isLast #84", function(){
 
 	});
 
-	it("", function(){
+	it("iterator #85", function(){
+
+	});
+
+	it("forEach #86", function(){
+
+	});
+
+	it("toArray #87", function(){
+
+	});
+
+	it("iterateFrom #88", function(){
+
+	});
+
+	it("reverseIterateFrom #89", function(){
 
 	});
 
