@@ -130,6 +130,10 @@ proto = {
 
    forEach: function(f){
       return Iterator.forEach(f);
+   },
+
+   toArray: function(){
+      return Iterator.toArray();
    }
 };
 
