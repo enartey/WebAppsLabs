@@ -132,11 +132,11 @@ proto = {
    },
 
    forEach: function(f){
-      return Iterator.forEach(f);
+      return this.iterator.forEach(f);
    },
 
    toArray: function(){
-      return Iterator.toArray();
+      return this.iterator.toArray();
    },
 
    iterateFrom: function(item){
