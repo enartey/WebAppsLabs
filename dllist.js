@@ -52,14 +52,14 @@ proto = {
 
    first: function(){
       if (this.isEmpty()){
-         throw new Error("List is Empty");
+         throw new Error("List is Empty. No first element");
       }
       return this.sentinel.next;
    },
 
    last: function(){
       if (this.isEmpty()){
-         throw new Error("List is Empty");
+         throw new Error("List is Empty. No last element");
       }
       return this.sentinel.prev;
    },
@@ -122,6 +122,10 @@ proto = {
          return true;
       }
       return false;
+   },
+
+   Iterator: function(){
+      return Iterator.new();
    }
 };
 
