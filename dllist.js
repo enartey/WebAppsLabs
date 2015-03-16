@@ -38,12 +38,13 @@ proto = {
    },
 
    length: function(){
-      var listLength = 0, item = this.sentinel.next;
+      var listLength = 1, item = this.sentinel.next;
       if (this.isEmpty()){
-         return listLength;
+         return 0;
       }
       while (item.next !== this.sentinel){
          listLength += 1;
+         item = item.next;
       }
       return listLength;
    },
