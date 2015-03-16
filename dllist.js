@@ -141,7 +141,7 @@ proto = {
    },
 
    iterateFrom: function(item){
-      while !(this.isLast(item)){
+      while (!this.isLast(item)){
          return this.iterator.fromFrunction(f);
       }
    }

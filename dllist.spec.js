@@ -41,5 +41,8 @@ describe("proto methods", function(){
 		expect(DL1.last()).to.throw(Error);
 	});
 
-
+	it("insertAt #76", function(){
+		console.log("look here jackass", DL2);
+		//expect(DL2.insertAt(9,))
+	});
 });
