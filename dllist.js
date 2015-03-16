@@ -51,14 +51,14 @@ proto = {
 
    first: function(){
       if (this.isEmpty()){
-         throw new Error("List is Empty. No first element");
+         throw new Error("List is Empty");
       }
       return this.sentinel.next;
    },
 
    last: function(){
       if (this.isEmpty()){
-         throw new Error("List is Empty. No last element");
+         throw new Error("List is Empty");
       }
       return this.sentinel.prev;
    },
@@ -138,7 +138,7 @@ proto = {
 
    toArray: function(){
       return this.iterator.toArray();
-   },
+   }/*,
 
    iterateFrom: function(item){
       while (!this.isLast(item)){
