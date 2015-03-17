@@ -99,14 +99,14 @@ proto = {
       if (this.isEmpty()){
          throw new Error("Cannot pop. List is Empty");
       }
-      this.remove(this.sentinel.prev);
+      return this.remove(this.sentinel.prev);
    },
 
    shift: function(){
       if (this.isEmpty()){
          throw new Error("Cannot shift. List is Empty");
       }
-      this.remove(this.sentinel.next);
+      return this.remove(this.sentinel.next);
    },
 
    isFirst: function(item){
@@ -124,13 +124,13 @@ proto = {
    },
 
    iterator: function(){
-      var item = this.sentinel.next, hasNext, item;
+      var item = this.sentinel.next, hasNext;
       if (this.isLast(item)){
          hasNext = false;
       }
       hasNext = true;
       item = Iterator.new(item, hasNext);
-      return item.value
+      return item.value;
    },
 
    forEach: function(f){

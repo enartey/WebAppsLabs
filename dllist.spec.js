@@ -41,9 +41,10 @@ describe("proto methods", function(){
 		expect(DL1.last).to.throw(Error);
 	});
 
-	it.skip("insertAt #76", function(){
-		console.log("look here jackass", DL2);
-		//expect(DL2.insertAt(9,))
+	it("insertAt #76", function(){
+		DL2.insertAt(22, DL2.sentinel.next.next);
+		expect(DL2.sentinel.prev.prev.value).to.equal(DL2.sentinel.next.next.next.value);
+		expect(DL2.sentinel.prev.prev.value).to.equal(22);
 	});
 
 	it("unshift #77", function(){
@@ -56,43 +57,65 @@ describe("proto methods", function(){
 	});
 
 	it("push #78", function(){
-
+		expect(DL2.sentinel.prev.value).to.equal(3);
+		//push has been done in the before loop for every test
 	});
 
 	it("endAt #79", function(){
-
+		DL2.endAt(DL2.sentinel.next.next);
+		expect(DL2.last()).to.equal(DL2.sentinel.next.next);
+		expect(DL2.sentinel.prev.next).to.equal(DL2.sentinel);
 	});
 
 	it("remove #80", function(){
-
+		DL2.remove(DL2.sentinel.prev);
+		expect(DL2.last()).to.equal(DL2.sentinel.next.next);
+		expect(DL2.sentinel.prev.next).to.equal(DL2.sentinel);
+		expect(DL2.remove(DL2.first())).to.equal(1);
 	});
 
 	it("pop #81", function(){
+		expect(DL1.pop).to.throw(Error);
+		expect(DL2.pop()).to.equal(3);
+		expect(DL2.last()).to.equal(DL2.sentinel.next.next);
 
 	});
 
 	it("shift #82", function(){
-
+		expect(DL1.shift).to.throw(Error);
+		expect(DL2.shift()).to.equal(1);
+		expect(DL2.first()).to.equal(DL2.sentinel.prev.prev);
 	});
 
 	it("isFirst #83", function(){
-
+		expect(DL2.isFirst(DL2.first())).to.equal(true);
+		expect(DL2.isFirst(DL2.last())).to.equal(false);
 	});
 
 	it("isLast #84", function(){
-
-	});
-
-	it("iterator #85", function(){
-
+		expect(DL2.isLast(DL2.last())).to.equal(true);
+		expect(DL2.isLast(DL2.first())).to.equal(false);
 	});
 
 	it("forEach #86", function(){
-
+		//these functions are applied to the value,
+		//not to the item
+		var f = function(){
+			this = 9;
+		}
+		var h = function(){
+			if (this != 9){
+				throw new error("forEach failed");
+			}
+		}
+		DL2.forEach(f);
+		expect(DL2.forEach(h)).to.not.throw(Error);
+		expect(DL2.forEach(f)).to.return.an("Object");
 	});
 
 	it("toArray #87", function(){
-
+		var arr = [1,2,3];
+		expect(DL2.toArray()).to.equal(arr);
 	});
 
 	it("iterateFrom #88", function(){
