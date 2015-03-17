@@ -99,7 +99,7 @@ proto = {
       if (this.isEmpty()){
          throw new Error("Cannot pop. List is Empty");
       }
-      this.remove(this.sentinel.prev);
+      return this.remove(this.sentinel.prev);
    },
 
    shift: function(){

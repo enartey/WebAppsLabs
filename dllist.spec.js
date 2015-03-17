@@ -71,10 +71,13 @@ describe("proto methods", function(){
 		DL2.remove(DL2.sentinel.prev);
 		expect(DL2.last()).to.equal(DL2.sentinel.next.next);
 		expect(DL2.sentinel.prev.next).to.equal(DL2.sentinel);
-		expect(DL2.remove(DL2.first)).to.equal(1);
+		expect(DL2.remove(DL2.first())).to.equal(1);
 	});
 
 	it("pop #81", function(){
+		expect(DL1.pop).to.throw(Error);
+		expect(DL2.pop()).to.equal(3);
+		expect(DL2.last()).to.equal(DL2.sentinel.next.next);
 
 	});
 
