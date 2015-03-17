@@ -124,12 +124,13 @@ proto = {
    },
 
    iterator: function(){
-      var item = this.sentinel.next, hasNext;
+      var item = this.sentinel.next, hasNext, item;
       if (this.isLast(item)){
          hasNext = false;
       }
       hasNext = true;
-      return Iterator.new(item, hasNext);
+      item = Iterator.new(item, hasNext);
+      return item.value
    },
 
    forEach: function(f){
@@ -141,8 +142,7 @@ proto = {
    }/*,
 
    iterateFrom: function(item){
-      while (!this.isLast(item)){
-         return this.iterator.fromFrunction(f);
+
       }
    }/*,
 
