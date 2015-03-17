@@ -82,27 +82,40 @@ describe("proto methods", function(){
 	});
 
 	it("shift #82", function(){
-
+		expect(DL1.shift).to.throw(Error);
+		expect(DL2.shift()).to.equal(1);
+		expect(DL2.first()).to.equal(DL2.sentinel.prev.prev);
 	});
 
 	it("isFirst #83", function(){
-
+		expect(DL2.isFirst(DL2.first())).to.equal(true);
+		expect(DL2.isFirst(DL2.last())).to.equal(false);
 	});
 
 	it("isLast #84", function(){
-
-	});
-
-	it("iterator #85", function(){
-
+		expect(DL2.isLast(DL2.last())).to.equal(true);
+		expect(DL2.isLast(DL2.first())).to.equal(false);
 	});
 
 	it("forEach #86", function(){
-
+		//these functions are applied to the value,
+		//not to the item
+		var f = function(){
+			this = 9;
+		}
+		var h = function(){
+			if (this != 9){
+				throw new error("forEach failed");
+			}
+		}
+		DL2.forEach(f);
+		expect(DL2.forEach(h)).to.not.throw(Error);
+		expect(DL2.forEach(f)).to.return.an("Object");
 	});
 
 	it("toArray #87", function(){
-
+		var arr = [1,2,3];
+		expect(DL2.toArray()).to.equal(arr);
 	});
 
 	it("iterateFrom #88", function(){
