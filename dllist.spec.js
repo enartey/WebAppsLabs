@@ -41,9 +41,10 @@ describe("proto methods", function(){
 		expect(DL1.last).to.throw(Error);
 	});
 
-	it.skip("insertAt #76", function(){
-		console.log("look here jackass", DL2);
-		//expect(DL2.insertAt(9,))
+	it("insertAt #76", function(){
+		DL2.insertAt(22, DL2.sentinel.next.next);
+		expect(DL2.sentinel.prev.prev.value).to.equal(DL2.sentinel.next.next.next.value);
+		expect(DL2.sentinel.prev.prev.value).to.equal(22);
 	});
 
 	it("unshift #77", function(){
@@ -56,15 +57,21 @@ describe("proto methods", function(){
 	});
 
 	it("push #78", function(){
-
+		expect(DL2.sentinel.prev.value).to.equal(3);
+		//push has been done in the before loop for every test
 	});
 
 	it("endAt #79", function(){
-
+		DL2.endAt(DL2.sentinel.next.next);
+		expect(DL2.last()).to.equal(DL2.sentinel.next.next);
+		expect(DL2.sentinel.prev.next).to.equal(DL2.sentinel);
 	});
 
 	it("remove #80", function(){
-
+		DL2.remove(DL2.sentinel.prev);
+		expect(DL2.last()).to.equal(DL2.sentinel.next.next);
+		expect(DL2.sentinel.prev.next).to.equal(DL2.sentinel);
+		expect(DL2.remove(DL2.first)).to.equal(1);
 	});
 
 	it("pop #81", function(){
