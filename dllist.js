@@ -106,7 +106,7 @@ proto = {
       if (this.isEmpty()){
          throw new Error("Cannot shift. List is Empty");
       }
-      this.remove(this.sentinel.next);
+      return this.remove(this.sentinel.next);
    },
 
    isFirst: function(item){
