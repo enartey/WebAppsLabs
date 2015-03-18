@@ -34,6 +34,13 @@ add: function(command){
 	item = this.list.insertAt(command, this.current);
 	this.list.endAt(item);
 	this.current.value.execute();
+},
+
+canRedo: function(){
+	if (this.current.next !== null || this.current.next !== this.sentinel){
+		return true;
+	}
+	else return false;
 }
 };
 

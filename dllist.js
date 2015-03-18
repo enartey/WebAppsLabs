@@ -124,25 +124,25 @@ proto = {
    },
 
    iterator: function(){
-      var that = this;
-      var it = Iterator.new(null, null);
-      it.item = this.sentinel;
-      it.next = function(){
+      var that = this, secondIterator;
+      secondIterator = Iterator.new(null, null);
+      secondIterator.item = this.sentinel;
+      secondIterator.next = function(){
          this.item = this.item.next;
          return this.item.value;
       };
-      it.hasNext = function(){
+      secondIterator.hasNext = function(){
          return this.item.next !== that.sentinel;
       };
-      return it;
+      return secondIterator;
    },
 
    forEach: function(f){
-      var it = this.iterator();
-      while (it.hasNext()) { 
-         it.item.value = f(it.next());
+      var secondIterator = this.iterator();
+      while (secondIterator.hasNext()) {
+         secondIterator.item.value = f(secondIterator.next());
       }
-      return this.lst;
+      return this;
    },
 
    toArray: function(){
@@ -150,8 +150,16 @@ proto = {
    },
 
    iterateFrom: function(item){
-      var next, hasNext, that = this;
-      next = that.sentinel.next.value;
+      var secondIterator = Iterator.new(null, null);
+      secondIterator.item = this.sentinel;
+      secondIterator.next = function(){
+         this.item = this.item.next;
+         return this.item.value;
+      };
+      secondIterator.hasNext = function(){
+         return this.item.next !== item;
+      };
+      return secondIterator;
    }/*,
 
    reverseIterateFrom: function(){
