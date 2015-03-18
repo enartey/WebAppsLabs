@@ -147,6 +147,7 @@ proto = {
 
    iterateFrom: function(item){
       var next, hasNext;
+      item = item.prev;
       next = function(){
          item = item.next;
          return item.value;
