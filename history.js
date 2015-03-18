@@ -67,7 +67,15 @@ undo: function(){
 },
 
 undoableIterator: function(){
-	return this.list.reverseIterateFrom(this.current);
+	if(this.canRedo()){
+		return this.list.reverseIterateFrom(this.current);
+	}
+},
+
+redoableIterator: function(){
+	if(this.canUndo()){
+		return this.list.iterateFrom(this.current);
+	}
 }
 };
 
