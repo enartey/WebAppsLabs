@@ -116,7 +116,7 @@ describe("proto methods", function(){
 
 	it("toArray #87", function(){
 		var arr = [1,2,3];
-		expect(DL2.toArray()).to.equal(arr);
+		expect(DL2.toArray()).to.deep.equal(arr);
 	});
 
 	it("iterateFrom #88", function(){
