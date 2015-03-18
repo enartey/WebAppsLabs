@@ -100,23 +100,22 @@ describe("proto methods", function(){
 	it("forEach #86", function(){
 		//these functions are applied to the value,
 		//not to the item
-		var f = function(){
-			console.log("@#$%^", this);
-			this = 9;
+		var f = function(value){
+			console.log("VALUE BEFORE: ", value);
+			return value*3;
 		}
-		var h = function(){
-			if (this != 9){
-				throw new error("forEach failed");
-			}
+		var h = function(value){
+			console.log("VALUE AFTER: ", value);
 		}
 		DL2.forEach(f);
-		expect(DL2.forEach(h)).to.not.throw(Error);
-		expect(DL2.forEach(f)).to.return.an("Object");
+		DL2.forEach(h);
+		expect(DL2.sentinel.next.value).to.equal(3);
+
 	});
 
 	it("toArray #87", function(){
 		var arr = [1,2,3];
-		expect(DL2.toArray()).to.equal(arr);
+		expect(DL2.toArray()).to.deep.equal(arr);
 	});
 
 	it("iterateFrom #88", function(){
