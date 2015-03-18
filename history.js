@@ -40,7 +40,11 @@ canRedo: function(){
 	if (this.current.next !== null || this.current.next !== this.sentinel){
 		return true;
 	}
-	else return false;
+	return false;
+},
+
+canUndo: function(){
+
 }
 };
 
