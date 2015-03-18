@@ -3,21 +3,23 @@
  *
  * Test file for your history class
  */
-var expect, DLList, CmdHistory, DL1, DL2, arg1 = 1, arg2 = 2;
 
-expect = require('./chai.js').expect;
+ /* eslint-env node,mocha */
+var expect, DLList, DL1, DL2, arg1 = 1, arg2 = 2; // CmdHistory,
 
-DLList = require('./dllist.js');
-CmdHistory = require('./history.js');
+expect = require("./chai.js").expect;
+
+DLList = require("./dllist.js");
+//	CmdHistory = require("./history.js");
 
 // ADD YOUR TESTS HERE
-
 describe("proto methods", function(){
+	"use strict";
 	beforeEach(function(){
 		DL1 = DLList.new();
 		DL2 = DLList.new();
-		DL2.push(arg1); //arg 1 is set to 1
-		DL2.push(arg2); //arg 2 is set to 2
+		DL2.push(arg1); //	arg 1 is set to 1
+		DL2.push(arg2); //	arg 2 is set to 2
 		DL2.push(3);
 	});
 
@@ -60,7 +62,7 @@ describe("proto methods", function(){
 
 	it("push #78", function(){
 		expect(DL2.sentinel.prev.value).to.equal(3);
-		//push has been done in the before loop for every test
+		//	push has been done in the before loop for every test
 	});
 
 	it("endAt #79", function(){
@@ -80,7 +82,6 @@ describe("proto methods", function(){
 		expect(DL1.pop).to.throw(Error);
 		expect(DL2.pop()).to.equal(3);
 		expect(DL2.last()).to.equal(DL2.sentinel.next.next);
-
 	});
 
 	it("shift #82", function(){
@@ -100,29 +101,29 @@ describe("proto methods", function(){
 	});
 
 	it("forEach #86", function(){
-		//these functions are applied to the value,
-		//not to the item
-		var arr = [];
-		var f = function(value){
+		//	these functions are applied to the value,
+		//	not to the item
+		var f;
+		f = function(value){
 			console.log("forEach works: ", value);
-		}
+		};
 		DL2.forEach(f);
 	});
 
 	it("toArray #87", function(){
-		var arr = [1,2,3];
+		var arr = [ 1, 2, 3 ];
 		expect(DL2.toArray()).to.deep.equal(arr);
 	});
 
 	it("iterateFrom #88", function(){
-		var result = (DL2.iterateFrom(DL2.first().next)).toArray();
-		var arr = [2,3];
+		var result = (DL2.iterateFrom(DL2.first().next)).toArray(), arr;
+		arr = [ 2, 3 ];
 		expect(result).to.deep.equal(arr);
 	});
 
 	it("reverseIterateFrom #89", function(){
-		var result = (DL2.reverseIterateFrom(DL2.first().next)).toArray();
-		var arr = [2,1];
+		var result = (DL2.reverseIterateFrom(DL2.first().next)).toArray(), arr;
+		arr = [ 2, 1 ];
 		expect(result).to.deep.equal(arr);
 	});
 });
