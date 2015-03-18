@@ -124,12 +124,11 @@ proto = {
    },
 
    iterator: function(){
-      var item = this.sentinel, val, hasNext, that = this;
+      var item = this.sentinel, hasNext, that = this;
       return Iterator.new(
          function(){
             item = item.next;
-            val = item.next.value;
-            return val;
+            return item.next.value;
          }
          ,function(){
             return item.next !== that.sentinel;
