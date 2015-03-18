@@ -23,6 +23,8 @@ describe("proto methods", function(){
 
 	it("isEmpty #72", function(){
 		expect(DL1.isEmpty()).to.equal(true);
+		DL1.push(1);
+		expect(DL1.isEmpty()).to.equal(false);
 		expect(DL2.isEmpty()).to.equal(false);
 	});
 
@@ -103,10 +105,6 @@ describe("proto methods", function(){
 		var f = function(value){
 			return value*3;
 		}
-		console.log("1st VAL BEFORE FOREACH: ", DL2.first().value);
-		DL2.forEach(f);
-		console.log("1st VAL AFTER FOREACH: ", DL2.first().value);
-		expect(DL2.first().value).to.equal(3);
 
 	});
 
