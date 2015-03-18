@@ -124,7 +124,7 @@ proto = {
    },
 
    iterator: function(){
-      var item = this.sentinel, hasNext, that = this;
+      /*var item = this.sentinel, hasNext, that = this;
       return Iterator.new(
          function(){
             item = item.next;
@@ -134,6 +134,20 @@ proto = {
          ,function(){
             return item.next !== that.sentinel;
          });
+*/
+
+      var that = this;
+      var it = Iterator.new(null, null);
+      it.item = this.sentinel;
+      it.next = function(){
+            this.item = this.item.next;
+            return this.item.value;
+         };
+
+      it.hasNext = function(){
+            return this.item.next !== that.sentinel;
+         };
+         return it;
       /*
       if (this.isLast(item)){
          hasNext = false;
@@ -145,7 +159,12 @@ proto = {
    },
 
    forEach: function(f){
-      return this.iterator().forEach(f);
+      /*return this.iterator().forEach(f);*/
+      var it = this.iterator();
+      while (it.hasNext()) { 
+         it.item.value = f(it.next());
+      }
+      return this.lst;
    },
 
    toArray: function(){
