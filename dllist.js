@@ -160,6 +160,7 @@ proto = {
 
    reverseIterateFrom: function(item){
       var next, hasNext, that = this;
+      item = item.next;
       next = function(){
          item = item.prev;
          return item.value;
