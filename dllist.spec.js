@@ -101,15 +101,12 @@ describe("proto methods", function(){
 		//these functions are applied to the value,
 		//not to the item
 		var f = function(value){
-			console.log("VALUE BEFORE: ", value);
 			return value*3;
 		}
-		var h = function(value){
-			console.log("VALUE AFTER: ", value);
-		}
+		console.log("1st VAL BEFORE FOREACH: ", DL2.first().value);
 		DL2.forEach(f);
-		DL2.forEach(h);
-		expect(DL2.sentinel.next.value).to.equal(3);
+		console.log("1st VAL AFTER FOREACH: ", DL2.first().value);
+		expect(DL2.first().value).to.equal(3);
 
 	});
 
