@@ -146,26 +146,26 @@ proto = {
    },
 
    iterateFrom: function(item){
-      var next, hasNext;
+      var next, hasNext, that = this;
       item = item.prev;
       next = function(){
          item = item.next;
          return item.value;
       };
       hasNext = function(){
-         return item.next !== item;
+         return item.next !== that.sentinel;
       };
       return Iterator.new(next, hasNext);
    },
 
    reverseIterateFrom: function(item){
-      var next, hasNext;
+      var next, hasNext, that = this;
       next = function(){
          item = item.prev;
          return item.value;
       };
       hasNext = function(){
-         return item.prev !== item;
+         return item.prev !== that.sentinel;
       };
       return Iterator.new(next, hasNext);
    }
