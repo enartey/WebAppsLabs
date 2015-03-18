@@ -128,7 +128,8 @@ proto = {
       return Iterator.new(
          function(){
             item = item.next;
-            return item.next.value;
+            //return item.value;
+            return item;
          }
          ,function(){
             return item.next !== that.sentinel;
