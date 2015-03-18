@@ -28,11 +28,12 @@ proto = {
 // Add instance methods here
 add: function(command){
 	var item;
-	if (this.current === null){
-		this.current = this.sentinel;
+	if (this.current == null){
+		this.current = this.list.sentinel;
 	}
 	item = this.list.insertAt(command, this.current);
 	this.list.endAt(item);
+	this.current = this.current.next; // can also be "item"
 	this.current.value.execute();
 },
 
