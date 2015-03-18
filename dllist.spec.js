@@ -125,5 +125,4 @@ describe("proto methods", function(){
 		var arr = [2,1];
 		expect(result).to.deep.equal(arr);
 	});
-
 });
