@@ -110,7 +110,7 @@ proto = {
    },
 
    isFirst: function(item){
-      if (this.isEmpty() === false && item.prev === this.sentinel){
+      if (!this.isEmpty() && item.prev === this.sentinel){
          return true;
       }
       return false;

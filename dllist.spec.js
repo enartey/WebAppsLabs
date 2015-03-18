@@ -23,6 +23,8 @@ describe("proto methods", function(){
 
 	it("isEmpty #72", function(){
 		expect(DL1.isEmpty()).to.equal(true);
+		DL1.push(1);
+		expect(DL1.isEmpty()).to.equal(false);
 		expect(DL2.isEmpty()).to.equal(false);
 	});
 
@@ -88,7 +90,7 @@ describe("proto methods", function(){
 	});
 
 	it("isFirst #83", function(){
-		expect(DL2.isFirst(DL2.first())).mto.equal(true);
+		expect(DL2.isFirst(DL2.first())).to.equal(true);
 		expect(DL2.isFirst(DL2.last())).to.equal(false);
 	});
 
@@ -110,7 +112,6 @@ describe("proto methods", function(){
 		DL2.forEach(f);
 		DL2.forEach(h);
 		expect(DL2.sentinel.next.value).to.equal(3);
-
 	});
 
 	it("toArray #87", function(){
