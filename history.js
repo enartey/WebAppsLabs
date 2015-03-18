@@ -59,11 +59,15 @@ redo: function(){
 },
 
 undo: function(){
-	if(this.current === null){
+	if (this.current === null){
 		throw new Error("No current method to undo");
 	}
 	this.current.value.unexecute();
 	this.current = this.current.prev;
+},
+
+undoableIterator: function(){
+	return this.list.reverseIterateFrom(this.current);
 }
 };
 
