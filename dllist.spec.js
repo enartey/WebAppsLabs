@@ -101,6 +101,7 @@ describe("proto methods", function(){
 		//these functions are applied to the value,
 		//not to the item
 		var f = function(){
+			console.log("@#$%^", this);
 			this = 9;
 		}
 		var h = function(){
