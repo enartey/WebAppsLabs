@@ -44,7 +44,18 @@ canRedo: function(){
 },
 
 canUndo: function(){
+	if (this.list.length() > 0){
+		return true;
+	}
+	return false;
+},
 
+redo: function(){
+	if (this.isLast(this.current)){
+		throw new Error("No next item for redo");
+	}
+	this.current = this.current.next;
+	this.current.value.execute();
 }
 };
 
