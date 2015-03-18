@@ -104,16 +104,9 @@ describe("proto methods", function(){
 		//not to the item
 		var arr = [];
 		var f = function(value){
-			console.log("VALUE BEFORE: ", value);
-			arr.push(value * 3);
-			return value*3;
-		}
-		var h = function(value){
-			console.log("VALUE AFTER: ", value);
+			console.log("forEach works: ", value);
 		}
 		DL2.forEach(f);
-		DL2.forEach(h);
-		expect((DL2.sentinel.next.value)*3).to.equal(3);
 	});
 
 	it("toArray #87", function(){
@@ -122,11 +115,15 @@ describe("proto methods", function(){
 	});
 
 	it("iterateFrom #88", function(){
-
+		var result = (DL2.iterateFrom(DL2.first().next)).toArray();
+		var arr = [2,3];
+		expect(result).to.deep.equal(arr);
 	});
 
 	it("reverseIterateFrom #89", function(){
-
+		var result = (DL2.reverseIterateFrom(DL2.first().next)).toArray();
+		var arr = [2,1];
+		expect(result).to.deep.equal(arr);
 	});
 
 });
