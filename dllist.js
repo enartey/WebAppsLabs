@@ -141,7 +141,7 @@ proto = {
       this.iterator().forEach(f);
       return this;
    },
-   
+
    toArray: function(){
       return this.iterator().toArray();
    },
@@ -151,16 +151,26 @@ proto = {
       secondIterator.item = this.sentinel;
       secondIterator.next = function(){
          this.item = this.item.next;
-         return this.item.value;
+         return this.item;
       };
       secondIterator.hasNext = function(){
-         return this.item.next !== item;
+         return this.item.next !== this.item;
       };
       return secondIterator;
-   }/*,
+   },
 
    reverseIterateFrom: function(){
-   }*/
+      var secondIterator = Iterator.new(null, null);
+      secondIterator.item = this.sentinel;
+      secondIterator.next = function(){
+         this.item = this.item.prev;
+         return this.item;
+      };
+      secondIterator.hasNext = function(){
+         return this.item.prev !== this.item;
+      };
+      return secondIterator;
+   }
 };
 
 
