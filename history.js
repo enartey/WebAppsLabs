@@ -67,13 +67,13 @@ undo: function(){
 },
 
 undoableIterator: function(){
-	if(this.canRedo()){
+	if (this.canRedo()){
 		return this.list.reverseIterateFrom(this.current);
 	}
 },
 
 redoableIterator: function(){
-	if(this.canUndo()){
+	if (this.canUndo()){
 		return this.list.iterateFrom(this.current);
 	}
 }
