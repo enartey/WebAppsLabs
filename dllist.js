@@ -124,17 +124,16 @@ proto = {
    },
 
    iterator: function(){
-      var that = this, secondIterator;
-      secondIterator = Iterator.new(null, null);
-      secondIterator.item = this.sentinel;
-      secondIterator.next = function(){
-         this.item = this.item.next;
-         return this.item.value;
+      var next, hasNext, that = this, item;
+      item = that.sentinel;
+      next = function(){
+         item = item.next;
+         return item.value;
       };
-      secondIterator.hasNext = function(){
-         return this.item.next !== that.sentinel;
+      hasNext = function(){
+         return item.next !== that.sentinel;
       };
-      return secondIterator;
+      return Iterator.new(next, hasNext);
    },
 
    forEach: function(f){
@@ -147,29 +146,27 @@ proto = {
    },
 
    iterateFrom: function(item){
-      var secondIterator = Iterator.new(null, null);
-      secondIterator.item = this.sentinel;
-      secondIterator.next = function(){
-         this.item = this.item.next;
-         return this.item;
+      var next, hasNext;
+      next = function(){
+         item = item.next;
+         return item.value;
       };
-      secondIterator.hasNext = function(){
-         return this.item.next !== this.item;
+      hasNext = function(){
+         return item.next !== item;
       };
-      return secondIterator;
+      return Iterator.new(next, hasNext);
    },
 
-   reverseIterateFrom: function(){
-      var secondIterator = Iterator.new(null, null);
-      secondIterator.item = this.sentinel;
-      secondIterator.next = function(){
-         this.item = this.item.prev;
-         return this.item;
+   reverseIterateFrom: function(item){
+      var next, hasNext;
+      next = function(){
+         item = item.prev;
+         return item.value;
       };
-      secondIterator.hasNext = function(){
-         return this.item.prev !== this.item;
+      hasNext = function(){
+         return item.prev !== item;
       };
-      return secondIterator;
+      return Iterator.new(next, hasNext);
    }
 };
 
