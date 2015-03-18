@@ -102,8 +102,10 @@ describe("proto methods", function(){
 	it("forEach #86", function(){
 		//these functions are applied to the value,
 		//not to the item
+		var arr = [];
 		var f = function(value){
 			console.log("VALUE BEFORE: ", value);
+			arr.push(value * 3);
 			return value*3;
 		}
 		var h = function(value){
@@ -111,7 +113,7 @@ describe("proto methods", function(){
 		}
 		DL2.forEach(f);
 		DL2.forEach(h);
-		expect(DL2.sentinel.next.value).to.equal(3);
+		expect((DL2.sentinel.next.value)*3).to.equal(3);
 	});
 
 	it("toArray #87", function(){

@@ -129,41 +129,19 @@ proto = {
       secondIterator.item = this.sentinel;
       secondIterator.next = function(){
          this.item = this.item.next;
-         //console.log(this.item.value);
          return this.item.value;
       };
       secondIterator.hasNext = function(){
-         //console.log(this.item.next !== that.sentinel);
          return this.item.next !== that.sentinel;
       };
-      console.log(secondIterator);
       return secondIterator;
-
-      /*var item = this.sentinel, val, hasNext, that = this;
-     return Iterator.new(
-         function(){
-            item = item.next;
-            val = item.next.value;
-            return val;
-         }
-         ,function(){
-            return item.next !== that.sentinel;
-         });
-*/
    },
 
    forEach: function(f){
-      var secondIterator = this.iterator();
-      while (secondIterator.hasNext()) {
-         console.log(secondIterator.hasNext());
-         console.log(secondIterator.item.value);
-         secondIterator.item.value = f(secondIterator.next());
-      }
+      this.iterator().forEach(f);
       return this;
-      
-      //return this.iterator().forEach(f);
    },
-
+   
    toArray: function(){
       return this.iterator().toArray();
    },
