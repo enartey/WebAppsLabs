@@ -134,16 +134,16 @@ proto = {
    },
 
    forEach: function(f){
-      return this.iterator.forEach(f);
+      return this.iterator().forEach(f);
    },
 
    toArray: function(){
-      return this.iterator.toArray();
-   }/*,
+      return this.iterator().toArray();
+   },
 
    iterateFrom: function(item){
-
-      }
+      var next, hasNext, that = this;
+      next = that.sentinel.next.value;
    }/*,
 
    reverseIterateFrom: function(){
