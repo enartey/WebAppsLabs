@@ -56,6 +56,14 @@ redo: function(){
 	}
 	this.current = this.current.next;
 	this.current.value.execute();
+},
+
+undo: function(){
+	if(this.current === null){
+		throw new Error("No current method to undo");
+	}
+	this.current.value.unexecute();
+	this.current = this.current.prev;
 }
 };
 
