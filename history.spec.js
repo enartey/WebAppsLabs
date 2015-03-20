@@ -51,7 +51,7 @@ describe("proto methods", function(){
 		expect(H1.list.length()).to.not.equal(0);
 	});
 
-	it("redo() issue #69", function(){
+	it("redo() issue #68", function(){
 		var cmd2 = mockCommand();
 		H1.add(cmd2);
 		expect(H1.current.value).to.equal(cmd2);
@@ -60,5 +60,18 @@ describe("proto methods", function(){
 		H1.redo();
 		expect(H1.current.value).to.equal(null);
 		expect(H2.redo()).to.throw(Error);
+	});
+
+	it("undo() issue #69", function(){
+		expect(H2.undo()).to.throw(Error);
+		
+	});
+
+	it("undoableIterator() issue #70", function(){
+
+	});
+
+	it("redoableIterator() issue #91", function(){
+
 	});
 });
