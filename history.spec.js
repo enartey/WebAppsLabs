@@ -51,4 +51,14 @@ describe("proto methods", function(){
 		expect(H1.list.length()).to.not.equal(0);
 	});
 
+	it("redo() issue #69", function(){
+		var cmd2 = mockCommand();
+		H1.add(cmd2);
+		expect(H1.current.value).to.equal(cmd2);
+		H1.redo();
+		expect(H1.current.value).to.equal(cmd);
+		H1.redo();
+		expect(H1.current.value).to.equal(null);
+		expect(H2.redo()).to.throw(Error);
+	});
 });
