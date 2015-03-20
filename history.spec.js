@@ -42,11 +42,13 @@ describe("proto methods", function(){
 		expect(H1.current.value).to.equal(cmd);
 	});
 
-	it("canRedo() issue#61", function(){
+	it("canRedo() issue #66", function(){
 		expect(H1.canRedo()).to.equal(true);
 		expect(H2.canRedo()).to.equal(false);
 	});
 
-
+	it("canUndo() issue #67", function(){
+		expect(H1.list.length()).to.not.equal(0);
+	});
 
 });
