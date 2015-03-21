@@ -38,7 +38,7 @@ add: function(command){
 },
 
 canRedo: function(){
-	if (this.current.next !== null || this.current.next !== this.sentinel){
+	if (this.current !== null && this.current.next !== null && this.current.next !== this.sentinel){
 		return true;
 	}
 	return false;
@@ -52,7 +52,7 @@ canUndo: function(){
 },
 
 redo: function(){
-	if (this.isLast(this.current)){
+	if (this.list.isLast(this.current)){
 		throw new Error("No next item for redo");
 	}
 	this.current = this.current.next;
