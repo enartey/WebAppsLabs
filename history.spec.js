@@ -3,22 +3,29 @@
  *
  * Test file for your history class
  */
-var expect, DLList, CmdHistory, H1, H2, cmd;
 
-expect = require('./chai.js').expect;
+ /* eslint-env node,mocha */
+var expect, CmdHistory, H1, H2, cmd, id, Log, LogEntries; /*DLList*/
 
-DLList = require('./dllist.js');
-CmdHistory = require('./history.js');
+expect = require("./chai.js").expect;
 
-var LogEntries = [];
-var Log = {
-   add: function(s) { LogEntries.push(s); return this; },
-   get: function() { return LogEntries; },
-   clear: function() { LogEntries = []; return this; }
+// DLList = require("./dllist.js");
+CmdHistory = require("./history.js");
+
+LogEntries = [];
+Log = {
+	add: function(s) {
+		LogEntries.push(s); return this; },
+	get: function() {
+		return LogEntries; },
+    clear: function() {
+		LogEntries = []; return this; }
 };
-var id = 0;
-function mockExecute() { Log.add(this.toString + " executed"); }
-function mockUnexecute() { Log.add(this.toString + " unexecuted"); }
+id = 0;
+function mockExecute() {
+	Log.add(this.toString + " executed"); }
+function mockUnexecute() {
+	Log.add(this.toString + " unexecuted"); }
 function mockCommand() {
    id += 1;
    return {
@@ -64,7 +71,9 @@ describe("proto methods", function(){
 
 	it("undo() issue #69", function(){
 		expect(H2.undo()).to.throw(Error);
-		
+		H1.add(mockCommand());
+		H1.undo();
+		expect(H1.current.value).to.equal(cmd);
 	});
 
 	it("undoableIterator() issue #70", function(){
